@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--enlaces del frontend-->
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="/static/img/logo.png" type="image/x-icon">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <!--terminan enlaces del frontend-->
+    <title>Historial de eventos</title>
+</head>
+<body>
+    <header>
+        <div class="contenedor-logo">
+            <!--Enlace frontend-->
+            <a href="/PerfilPersonal" title="Volver"><img src="/static/img/atras.png" class="logo"></a>
+            <!--termina enlace frontend-->
+        </div>
+        <div class="contenedor-titulo">
+            <p class="titulo-principal">Historial de eventos</p>
+        </div>
+    </header>
+
+    <div class="cuerpo-historial">
+        <div class="conte-historial">
+            <table class="tablahistorial" id="lista-historial">	
+                <thead>
+                    <tr>
+                        <th>
+                            
+                        </th>       
+                    </tr>
+                </thead>
+
+                <tbody id="contenido-historial">
+                    <% r.forEach((evento)=> { %>
+                        <% re.forEach((Nombre)=> { %>
+                            <% if ( evento.ID_Evento ==  Nombre.ID_Evento){%>
+                                <tr>
+                                    <th>
+                                        <div class="historial-individual">
+                                            <div class="evento-historial">
+                                                <!--Aqui se debe traer el nombre del evento-->
+                                                <p>Evento: <%= evento.Nombre_Evento%></p>
+                                                <!--Aqui se debe traer el nombre del evento-->
+                                            </div>
+                                            <div class="organizador-historial">
+                                                <!--Aqui se debe traer el organizador del evento-->
+                                                <p>Organizador: <%= Nombre.Nombre_Usuario%></p>
+                                                <!--Aqui se debe traer el organizador del evento-->
+                                            </div>
+                                            <div class="fecha-historial"> 
+                                                <!--Aqui se debe traer la fecha del evento-->
+                                                <p>Fecha: <%= evento.Fecha_Inicio.toISOString().split('T')[0]%></p>
+                                                <!--Aqui se debe traer la fecha del evento-->
+                                            </div>
+                                            <div class="boton-eliminarhistorial">
+                                                <a href="/EliminarHistorial/<%= evento.ID_Evento%>" class="eliminarhistorial" title="Click para eliminar eliminar">Eliminar</a>
+                                            </div>
+                                        </div>
+                                    </th>
+                                </tr>
+                            <%}%>  
+                        <% }) %>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <% if (typeof alert != "undefined") { %>
+            <script>
+                Swal.fire({
+                    title: '<%= alertTitle %>',
+                    text: '<%= alertMessage %>',
+                    icon: '<%= alertIcon %>',
+                    showConfirmButton: '<%= showConfirmButton %>',
+                    timer: '<%= timer %>'
+                })
+            </script>
+        <% } %>
+
+</body>
+</html>

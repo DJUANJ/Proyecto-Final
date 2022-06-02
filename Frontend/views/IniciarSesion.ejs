@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Iniciar Sesión</title>
+    <!--Enlaces del frontend-->
+    <link rel="shortcut icon" href="/static/img/logo.png" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!--aqui termina-->
+</head>
+
+<body>
+    <script>
+        function myFunction() {
+            var x = document.getElementById("txtpass");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+            }
+        } 
+    </script>
+    
+    <section class="posicion">
+
+            <div class="posicion-imagen">
+                <div class="volver">
+                    <!--Enlace frontend-->
+                    <a href="/" title="Volver"><img src="/static/img/atras.png" class="boton-atras"></a>
+                    <!--termina enlace frontend-->
+                </div>
+                <!--Enlace frontend-->
+                <img src="/static/img/login.png">
+                <!--termina enlace frontend-->
+            </div>
+
+            <div class="posicion-formulario" >
+                
+                <div>
+                    <p class="titulologin">Iniciar Sesión</p>
+                </div>
+            
+                <form name="frmlogin" id="formulario" action="/auth" method="POST" autocomplete="off">
+                    <div>
+                        <input type="email" id="txtuser" placeholder="Correo eléctronico" name="correo" class="textboxlogin" required>
+                    </div>
+                    
+                    <div>
+                        <input type="password" id="txtpass" placeholder="Contraseña" name="pass" class="textboxlogin" required>
+                        <input type="checkbox" onclick="myFunction()" value="Show Password" id="activar" title="Ver contraseña" name="ckactivar">
+                    </div>
+        
+                    <div class="control"></div>
+                        <input type="submit" id="btnlogin" name="login" class="boton" Value="Siguiente"> 
+                    </div>
+                </form>
+            </div>
+    </section>  
+    <!-- Sweet alert traida desde app.js-->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <% if(typeof alert !="undefined"){ %>
+        <script>
+            Swal.fire({
+                title: '<%= alertTitle %>',
+                text: '<%= alertMessage%>',
+                icon: '<%= alertIcon %>',
+                showConfirmButton: '<%=showConfirmButton%>',
+                timer: '<%= timer %>',
+            }).then(()=>{
+                window.location='/<%=ruta%>'
+            })
+        </script>
+    <% } %>  
+</body>
+</html>

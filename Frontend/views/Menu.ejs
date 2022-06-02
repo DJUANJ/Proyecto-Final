@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--enlaces del frontend-->
+    <link rel="shortcut icon" href="/static/img/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <!--terminan enlaces del frontend-->
+    <title>Academic Events</title>
+</head>
+<body class="body-opciones">
+
+    <header>
+        <div class="contenedor-logo">
+            <!--Enlace frontend-->
+            <img src="/static/img/logo.png" class="logo">
+            <!--termina enlace frontend-->
+        </div>
+        <div class="contenedor-titulo">
+            <p class="titulo-principal">Academic Events</p>
+        </div>
+        <div class="contenedor-nombre">
+            <!--aqui se manda a llamar el nombre de la base de datos-->
+            <% if (login){%>
+                <p><%=User%></p>
+            <%}%>
+            <!--aqui termina-->
+        </div>
+        <div class="menu-desplegable">     
+            <ul class="nav">
+                <li>
+                    <div class="contenedor-perfil">
+                        <!--en este div se realizaria la funcion de la imagen de perfil
+                        ya que esta se trae desde la base pero coloque esta por mientras-->
+                    
+                            <img src="/files/<%=fotoUser%>" class="borrador-perfil">
+                        
+                        <!--fin del comunicado-->
+                    </div>
+                    <ul>
+                        <li><a href="/PerfilPersonal" class="menu-opciones">Mi perfil</a></li>
+                        <li><a href="#" class="menu-opciones" id="logout">Cerrar sesión</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <section class="menu-texto">
+                <p class="texto-opciones"> 
+                    Cuando te inscribes en alguno de nuestros eventos disponibles, puedes ser 
+                    parte de las diversas conferencias que se llevan a cabo, ya sea en modalidad 
+                    virtual o presencial, ¡Tú eliges! 
+                </p>
+        </section>
+
+        <section class="opciones">
+            <div class="contenedor-opciones">
+                <div class="galeria-opciones">
+                    <div>
+                        <div class="opcion-ind">
+                            <!--Enlace frontend-->
+                            <img src="/static/img/organizar.png" alt="">
+                            <!--termina enlace frontend-->
+                            <a href="/OrganizarEvento">Organizar evento</a>
+                        </div>
+                        <div class="opcion-ind">
+                            <!--Enlace frontend-->
+                            <img src="/static/img/ver.png" alt="">
+                            <!--termina enlace frontend-->
+                            <a href="/EventosAcademicos">Ver eventos disponibles</a>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="opcion-ind">
+                            <!--Enlace frontend-->
+                            <img src="/static/img/events.png" alt="">
+                            <!--termina enlace frontend-->
+                            <a href="/MisEventos">Mis eventos</a>
+                        </div>
+                        <div class="opcion-ind">
+                            <!--Enlace frontend-->
+                            <img src="/static/img/inscripcion.png" alt="">
+                            <!--termina enlace frontend-->
+                            <a href="/MisInscripciones">Mis inscripciones</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+        <script>
+        document.getElementById('logout').addEventListener('click',function(e){
+        e.preventDefault();
+        Swal.fire({
+                title: '¿Seguro que desea cerrar sesión?',
+                text: "",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: '¡Sí, cerrar sesión!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                setTimeout(function() {
+                window.location='/logout';},1000)
+                Swal.fire(
+                'Logout!',
+                'Su sesión ha sido cerrada',
+                'success',
+                )
+            }
+        })
+        });
+        </script>
+</body>
+</html>

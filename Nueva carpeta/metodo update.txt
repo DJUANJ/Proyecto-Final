@@ -1,0 +1,215 @@
+/// Update
+app.post('/EditarPerfil',upload.single('avatarE'),async(req,res)=>{
+    const correo = req.body.Email;
+    const nombre = req.body.NombreUsuario;
+    const  descripcion= req.body.descripcionUsuario;
+    const institucion= req.body.InstitucionEP;
+    const formacion= req.body.formacion; 
+    //const passActual=req.body.PassActual;
+    const passNueva=req.body.PassNueva;
+    var foto="";
+    try{
+        foto=req.file.filename;
+    }catch(eroor){
+        console.log("Error")
+    }
+    if(passNueva!=undefined){
+    var passwordHash = await bcryptjs.hash(passNueva, 8);
+    };
+ // Busca que el usuario exista
+    conexion.query('SELECT * FROM Registro_Usuario WHERE Email_Usuario = ?',[correo], async (error,results)=>{
+        const borrar =results[0].Fotografia_Usuario;
+        ///Si el resultado Existe
+        if(results.length != 0){
+        /// Verifica si no se cambio contraseña y setea los otros datos   
+            if(passNueva==undefined){
+            if(foto==""){
+                conexion.query('UPDATE registro_Usuario set ? WHERE email_Usuario=?',[{Nombre_Usuario:nombre,
+                    Institucion_Academica:institucion,Formacion:formacion,Descripcion_Usuario:descripcion},correo],async(error,result)=>{
+                        if(error){
+                            res.send("error Update");
+                        }else{
+                            //Si se ingreso vuelve a consultar los datos para actualizarlos
+                            conexion.query('SELECT * FROM Registro_Usuario WHERE Email_Usuario = ?',[correo], async (error,results)=>{
+                            if(results.length != 0){ 
+                            ///Actualizamos las variables de inicio de session 
+                                req.session.loggedin= true;
+                                req.session.name = results[0].Nombre_Usuario;
+                                req.session.id= results[0].ID_Usuario;
+                                req.session.fotoUser= results[0].Fotografia_Usuario;
+                                req.session.email=results[0].Email_Usuario;
+                                req.session.instituto= results[0].Institucion_Academica;
+                                req.session.formacion= results[0].Formacion;
+                                req.session.descripcion= results[0].Descripcion_Usuario;
+                                req.session.pass=req.session.pass;
+                                /// renderizamos la vista para mostrar el alert
+                                res.render('EditarPerfil',{
+                                ///Mandamos los valores necesarios
+                                login: true,
+                                User: req.session.name,
+                                ID: req.session.id, 
+                                fotoUser: req.session.fotoUser,
+                                Instituto: req.session.instituto,
+                                Formacion: req.session.formacion,
+                                Descripcion:req.session.descripcion,
+                                Email:req.session.email,
+                                Password: req.session.pass,
+                                alert:true,
+                                alertTitle:"Actualizacion de datos",
+                                alertMessage:"¡Datos actualizados correctamente!",
+                                alertIcon:'success',
+                                showConfirmButton:false,
+                                timer: 1500,
+                                ruta:'PerfilPersonal'
+                            });
+                        }
+                    })
+
+                }
+            });
+            //    
+            }else{
+                conexion.query('UPDATE registro_Usuario set ? WHERE email_Usuario=?',[{Nombre_Usuario:nombre,
+                    Institucion_Academica:institucion,Formacion:formacion,Descripcion_Usuario:descripcion,Fotografia_Usuario:foto},correo],async(error,result)=>{
+                        if(error){
+                            res.send("error Update");
+                        }else{
+                            //Si se ingreso vuelve a consultar los datos para actualizarlos
+                            conexion.query('SELECT * FROM Registro_Usuario WHERE Email_Usuario = ?',[correo], async (error,results)=>{
+                            if(results.length != 0){ 
+                            ///Actualizamos las variables de inicio de session 
+                                req.session.loggedin= true;
+                                req.session.name = results[0].Nombre_Usuario;
+                                req.session.id= results[0].ID_Usuario;
+                                req.session.fotoUser= results[0].Fotografia_Usuario;
+                                req.session.email=results[0].Email_Usuario;
+                                req.session.instituto= results[0].Institucion_Academica;
+                                req.session.formacion= results[0].Formacion;
+                                req.session.descripcion= results[0].Descripcion_Usuario;
+                                req.session.pass=req.session.pass;
+                                /// Borramos la foto Vieja
+                                fs.unlink('./Backend/database/uploads/'+borrar,function(err){
+                                    if(err) return console.log(err);
+                                    console.log('file deleted successfully');
+                                    }); 
+                                /// renderizamos la vista para mostrar el alert
+                                res.render('EditarPerfil',{
+                                ///Mandamos los valores necesarios
+                                login: true,
+                                User: req.session.name,
+                                ID: req.session.id, 
+                                fotoUser: req.session.fotoUser,
+                                Instituto: req.session.instituto,
+                                Formacion: req.session.formacion,
+                                Descripcion:req.session.descripcion,
+                                Email:req.session.email,
+                                Password: req.session.pass,
+                                alert:true,
+                                alertTitle:"Actualizacion de datos",
+                                alertMessage:"¡Datos actualizados correctamente!",
+                                alertIcon:'success',
+                                showConfirmButton:false,
+                                timer: 1500,
+                                ruta:'PerfilPersonal'
+                            });
+                        }
+                    })
+
+                }
+            }); 
+        }
+        }else{
+            if(foto==""){
+                conexion.query('UPDATE registro_Usuario set ? WHERE email_Usuario=?',[{Nombre_Usuario:nombre,
+                    Institucion_Academica:institucion,Formacion:formacion,Descripcion_Usuario:descripcion,Password_Usuario:passwordHash},correo],async(error,result)=>{
+                        if(error){
+                            console.log("error Update");
+                        }else{
+                            conexion.query('SELECT * FROM Registro_Usuario WHERE Email_Usuario = ?',[correo], async (error,results)=>{
+                                if(results.length != 0){ 
+                            ///Actualizamos las variables de inicio de session 
+                            req.session.loggedin= true;
+                            req.session.name = results[0].Nombre_Usuario;
+                            req.session.id= results[0].ID_Usuario;
+                            req.session.fotoUser= results[0].Fotografia_Usuario;
+                            req.session.email=results[0].Email_Usuario;
+                            req.session.instituto= results[0].Institucion_Academica;
+                            req.session.formacion= results[0].Formacion;
+                            req.session.descripcion= results[0].Descripcion_Usuario;
+                            req.session.pass=passNueva;
+                            /// renderizamos la vista para mostrar el alert
+                            res.render('EditarPerfil',{
+                            ///Mandamos los valores necesarios
+                            login: true,
+                            User: req.session.name,
+                            ID: req.session.id, 
+                            fotoUser: req.session.fotoUser,
+                            Instituto: req.session.instituto,
+                            Formacion: req.session.formacion,
+                            Descripcion:req.session.descripcion,
+                            Email:req.session.email,
+                            Password: req.session.pass,
+                            alert:true,
+                            alertTitle:"Actualizacion de datos",
+                            alertMessage:"¡Datos actualizados correctamente!",
+                            alertIcon:'success',
+                            showConfirmButton:false,
+                            timer: 1500,
+                            ruta:'PerfilPersonal'
+                        });
+                    }})
+                }
+            });
+        }else{
+            conexion.query('UPDATE registro_Usuario set ? WHERE email_Usuario=?',[{Nombre_Usuario:nombre,
+                    Institucion_Academica:institucion,Formacion:formacion,Descripcion_Usuario:descripcion,Password_Usuario:passwordHash,Fotografia_Usuario:foto},correo],async(error,result)=>{
+                        if(error){
+                            console.log("error Update");
+                        }else{
+                            conexion.query('SELECT * FROM Registro_Usuario WHERE Email_Usuario = ?',[correo], async (error,results)=>{
+                                if(results.length != 0){ 
+                                    ///Actualizamos las variables de inicio de session 
+                            req.session.loggedin= true;
+                            req.session.name = results[0].Nombre_Usuario;
+                            req.session.id= results[0].ID_Usuario;
+                            req.session.fotoUser= results[0].Fotografia_Usuario;
+                            req.session.email=results[0].Email_Usuario;
+                            req.session.instituto= results[0].Institucion_Academica;
+                            req.session.formacion= results[0].Formacion;
+                            req.session.descripcion= results[0].Descripcion_Usuario;
+                            req.session.pass=passNueva;
+                            /// Borramos la foto Vieja
+                            fs.unlink('./Backend/database/uploads/'+borrar,function(err){
+                                if(err) return console.log(err);
+                                console.log('file deleted successfully');
+                                }); 
+                            /// renderizamos la vista para mostrar el alert
+                            /// renderizamos la vista para mostrar el alert
+                            res.render('EditarPerfil',{
+                            ///Mandamos los valores necesarios
+                            login: true,
+                            User: req.session.name,
+                            ID: req.session.id, 
+                            fotoUser: req.session.fotoUser,
+                            Instituto: req.session.instituto,
+                            Formacion: req.session.formacion,
+                            Descripcion:req.session.descripcion,
+                            Email:req.session.email,
+                            Password: req.session.pass,
+                            alert:true,
+                            alertTitle:"Actualizacion de datos",
+                            alertMessage:"¡Datos actualizados correctamente!",
+                            alertIcon:'success',
+                            showConfirmButton:false,
+                            timer: 1500,
+                            ruta:'PerfilPersonal'
+                        });
+                    }})
+                }
+            });
+        }
+    }
+}
+});
+});
+////Termina el metodo

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--enlaces del frontend-->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/static/img/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <!--terminan enlaces del frontend-->
+    <title>Editar perfil</title>
+</head>
+<body>
+<!--Jorge  scripts que activan los text boxt a edita-->
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    function Enable(id){
+        let text=document.getElementById(id);
+        let button=document.getElementById('GuardarCambios');
+            text.removeAttribute('ReadOnly');
+            text.focus();
+            text.style="background-color:#ffffff"
+            console.log(text.value);
+            console.log(txtEmail.value);
+            if(button.disabled){
+                button.disabled=false;
+                button.className="boton-EP1"
+            }
+        }
+    
+</script>
+<script>
+    function EnableD(id){
+        let text=document.getElementById(id);
+        let button=document.getElementById('GuardarCambios');
+            text.removeAttribute('ReadOnly');
+            text.focus();
+            if(button.disabled){
+                button.disabled=false;
+                button.className="boton-EP1"
+            }
+    }
+</script>
+<script>
+    function EnableB(){
+        let button=document.getElementById('GuardarCambios');
+            if(button.disabled){
+                button.disabled=false;
+                button.className="boton-EP1"
+            }
+    }
+</script>
+
+<script>
+function Verificar(){
+    let pass = document.getElementById("txtPassActual");
+    let button=document.getElementById("veri");
+    if(pass.value=="<%=Password%>"){
+        Swal.fire({
+    position: 'center',
+    icon: 'success',
+    title: 'Contraseña Correcta',
+    showConfirmButton: false,
+    timer: 1500
+})
+document.getElementById('txtPassNueva').disabled=false;
+document.getElementById('GuardarCambios').disabled=false;
+document.getElementById('GuardarCambios').className="boton-EP1";
+pass.disabled=true;
+pass.style="background-color:#eeeeee"
+button.disabled=true;
+        }else{
+            Swal.fire({
+                position: 'center',
+                icon: 'error',
+                title: 'Contraseña Incorrecta',
+                showConfirmButton: false,
+                timer: 1500
+            })
+            pass="";
+    }
+}
+</script>
+<script>
+function cancelar(){
+    Swal.fire({
+    position: 'Center',
+    icon: 'warning',
+    title: 'Editar perfil Cancelado',
+    showConfirmButton: false,
+    timer: 1500,
+}).then(()=>{
+    window.location.replace('javascript:history.back(-1);');  
+            })
+}
+</script>
+
+
+    <header>
+        <div class="contenedor-logo">
+            <!--Enlace frontend-->
+            <a href="javascript:history.back(-1);" title="Volver"><img src="/static/img/atras.png" class="logo"></a>
+            <!--termina enlace frontend-->
+        </div>
+        <div class="contenedor-titulo-IC">
+            <p class="titulo-principal-IC">Editar perfil</p>
+        </div>
+    </header>
+
+    <div class="cuerpo-EP">
+        <div class="conte-formulario-EP1">
+            <div class="conte-formulario-EP">
+                <form name="frmEditar" action="/EditarPerfil" id="editar-perfil" method="post" enctype="multipart/form-data">
+                    <p class="tituloprogramacionIC">Datos personales</p>
+                    <hr class="lineahorizontal-centradaIC">
+
+                    <div class="control1-EP">
+                        <p class="label-EP">Correo electrónico:</p>
+                        <input type="text" id="txtEmail" name="Email" class="textbox-EP" value="<%=Email%>"  readonly  style="background-color:#eeeeee">
+                    </div>
+
+                    <div class="control1-EP">
+                        <p class="label-EP">Nombre de usuario:</p>
+                        <input type="text" id="txtNombreUsuario" name="NombreUsuario" class="textbox-EP" value="<%=User%>"  readonly style="background-color:#eeeeee" >
+                        <button type="button" id="EditUser" class="boton-editarEP" title="Click para editar Nombre de usuario" onclick="Enable('txtNombreUsuario')"><img src="/static/img/editar.png" class="editar-imagenEP"></button>
+                    </div>
+
+                    <div class="control2-EP">
+                        <p class="label-AC">Títulos, descripción e intereses:</p>
+                        <textarea name="descripcionUsuario" id="txtDescripcionUsuario" cols="65" rows="3" 
+                        style="font-size: 1.4vw; font-family: cambria;" readonly><%=Descripcion%></textarea> 
+                        <button type="button" class="boton-editarEP" title="Click para editar Descripción" onclick="EnableD('txtDescripcionUsuario')"><img src="/static/img/editar.png" class="editar-imagenEP"></button>
+                    </div>
+
+                    
+                    <br><br>
+                    <p class="tituloprogramacionIC">Datos académicos</p>
+                    <hr class="lineahorizontal-centradaIC">
+                    <div class="control1-EP">
+                        <p class="label-EP">Institución:</p>
+                        <input type="text" id="txtInstitucionEP" name="InstitucionEP" class="textbox-EP" value="<%=Instituto%>"  readonly style="background-color:#eeeeee">
+                        <button type="button" class="boton-editarEP" title="Click para editar Institución" onclick="Enable('txtInstitucionEP')"><img src="/static/img/editar.png" class="editar-imagenEP"></button>
+                    </div>
+
+                    <div class="control1-EP">
+                        <p class="label-EP">Formación académica:</p>
+                        <select id="cmbFormacionEP" name="formacion" class="combo-EP" readonly style="background-color:#eeeeee" > 
+                            <option selected><%=Formacion%></option>
+                            <option value="Educación Primaria">Educación Primaria</option>
+                            <option value="Educación Secundaria">Educación Secundaria</option>
+                            <option value="Educación Superior">Educación Superior</option>
+                            <option value="Máster/Doctorado">Máster/Doctorado</option>
+                        </select>
+                        <button type="button" class="boton-editarEP" title="Click para editar Formación académica" onclick="Enable('cmbFormacionEP')"><img src="/static/img/editar.png" class="editar-imagenEP"></button>
+                    </div>
+
+                    <br><br>
+                    <p class="tituloprogramacionIC">Foto de perfil</p>
+                    <hr class="lineahorizontal-centradaIC">
+                    <div class="control3-EP">
+                        <p class="label-EP">Imagen actual:</p>
+                        <div class="contenedor-perfil-EP">
+                            <table class="tabla-perfil-PP" id="lista-eventos">		
+                            <!--Aqui se debe traer la imagen de perfil desde la base-->
+                                <tbody>
+                                    <tr>
+                                        <th><img src="/files/<%=fotoUser%>" class="celdas-perfil-PP"></th>
+                                    </tr>
+                                </tbody>
+                            <!--termina el de traer la imagen de perfil desde la base-->
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="control1-EP">
+                        <p class="label-EP">Seleccione una imagen:</p>
+                        <div class="tapaEP"></div>
+                        <label for="cargarImgPerfil"><img src="/static/img/carpeta.png" class="carpeta-imagenEP"></label>
+                        <input  type="file" accept="image/*" id="cargarImgPerfil" name="avatarE" atl="submit"  onclick="EnableB()">
+                    </div>
+
+                    <br><br>
+                    <p class="tituloprogramacionIC">Cambiar contraseña</p>
+                    <hr class="lineahorizontal-centradaIC">
+                    <div class="control1-EP">
+                        <p class="label-EP">Ingresar contraseña actual:</p>
+                        <input placeholder="Valide su contraseña actual" type="password" id="txtPassActual" name="PassActual" class="textbox-EP">
+                        <button type="button" id="veri"class="boton-editarEP" title="Click para confirmar contraseña actual" onclick="Verificar()"><img src="/static/img/cofirmar.png" class="editar-imagenEP"></button>
+                    </div>
+
+                    <div class="control1-EP">
+                        <p class="label-EP">Contraseña nueva:</p>
+                        <input  type="password" id="txtPassNueva" name="PassNueva" class="textbox-EP"  disabled="" style="background-color:#eeeeee" >
+                    </div>
+
+
+
+                    <div class="control4-EP">
+                        <!--Jorge: Se cambio a submit para aceptar cambios-->
+                        <input id="GuardarCambios" type="submit" class="boton-EP1Disable" title="Click para guardar los cambios realizados" value="Guardar cambios" disabled="">
+                        <input type="button" id="Cancelar" class="boton-EP2" title="Click para editar cancelar la edición" onclick="cancelar()" value="Cancelar">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <% if(typeof alert !="undefined"){ %>
+        <script>
+            Swal.fire({
+                title: '<%= alertTitle %>',
+                text: '<%= alertMessage%>',
+                icon: '<%= alertIcon %>',
+                showConfirmButton: '<%=showConfirmButton%>',
+                timer: '<%= timer %>',
+            }).then(()=>{
+                window.location='/<%=ruta%>'
+
+            })
+        </script>
+    <% } %>
+
+
+
+</body>
+</html>

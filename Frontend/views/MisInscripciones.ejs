@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--enlaces del frontend-->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/static/img/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <!--terminan enlaces del frontend-->
+    <title>Mis inscripciones</title>
+</head>
+<body>
+    <header>
+        <div class="contenedor-logo">
+            <!--Enlace frontend-->
+            <a href="/Menu" title="Volver"><img src="/static/img/atras.png" class="logo"></a>
+            <!--termina enlace frontend-->
+        </div>
+        <div class="contenedor-titulo">
+            <p class="titulo-principal">Mis inscripciones</p>
+        </div>
+    </header>
+    
+    <div class="cuerpo-ME">
+        <div class="conte-eventoME">
+            <!--tabla de los inscripciones-->
+            <table class="tablaME" id="lista-eventoEA">	
+                <thead>
+                    <tr>
+                        <th>
+                            
+                        </th>       
+                    </tr>
+                </thead>
+
+                <tbody id="contenido-eventoEA">
+                    <% r.forEach((evento)=> { %>
+                        <tr>
+                            <th>
+                                <!--tabla de la imagen del evento y de los botones de ver participantes y eliminar evento-->
+                                <div class="conte-imagenesME">
+                                    <div class="conte-tabla-imagenesME">
+                                        <table class="tablaME" id="lista-eventos" >		
+                                            <tbody>
+                                                <% re.forEach((imagenes)=> { %>
+                                                    <% if ( evento.ID_Evento ==  imagenes.ID_Evento){%>
+                                                        <tr>
+                                                            <th class="celdas-imagen">
+                                                                <img width="201%" height="auto" src="/filesE/<%= imagenes.Url_Evento %>">   
+                                                            </th>
+                                                        </tr>
+                                                    <%}%> 
+                                                <% }) %>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <div class="control-botones-imagenes">
+                                        <a class="boton-descargarEA" href="/descargarpdf/<%= evento.ID_Evento%>/<%= evento.Nombre_Evento%>"  target="_blank">Descargar evento en PDF</a>    
+                                    </div>
+                                </div>
+                                <!--aqui termina tabla de la imagen del evento y de los botones de ver participantes y eliminar evento-->
+
+                                <div class="control-ME1">
+                                    <p class="label-ME1">Fecha inicial:</p>
+                                    <input type="text" id="txtFecha1MiEvento" name="Fecha1MiEvento" class="textbox-ME1" value="<%= evento.Fecha_Inicio.toISOString().split('T')[0] %>" readonly> 
+                                    <p class="label-ME2">Fecha final:</p>
+                                    <input type="text" id="txtFecha2MiEvento" name="Fecha2MiEvento" class="textbox-ME2" value="<%= evento.Fecha_Final.toISOString().split('T')[0] %>" readonly>
+                                </div>
+
+                            <div class="control-ME1">
+                                    <p class="label-ME1">Nombre del evento:</p>
+                                    <input type="text" id="txtNombreMiEvento" name="NombreMiEvento" class="textbox-ME1" value="<%= evento.Nombre_Evento %>" readonly>
+                                    <p class="label-ME2">Institución:</p>
+                                    <input type="text" id="txtInstitucionMiEvento" name="InstitucionMiEvento" class="textbox-ME2" value="<%= evento.Institucion %>" readonly>
+                                </div>
+
+                                <div class="control-areaME">
+                                    <p class="label-ME1">Descripción del evento:</p>
+                                    <textarea name="DescripcionMiEvento" id="taDescripcionMiEvento" cols="65" rows="3" style="font-size: 1.29vw; font-family: cambria; color: #414141d3;" readonly><%= evento.Descripcion_Evento%></textarea> 
+                                </div>
+
+                                <div class="control-ME1">
+                                    <p class="label-ME1">Tipo de evento:</p> 
+                                    <input type="text" id="txtTipoMiEvento" name="TipoMiEvento" class="textbox-ME1" value="<%= evento.Descripcion %>" readonly>  
+                                    <p class="label-MIorg">Organizador:</p>
+                                    <a href="/Organizador/PerfilPublicoInscripciones/<%= evento.ID_Organizador%>" id="txtOrganizador" name="Organizador" title="Clic para ver perfil" class="textbox-EAenlace"><%= evento.Nombre_Usuario%></a>
+                                </div>
+
+                                <div class="control-botonesME">
+                                    <div>
+                                        <a href="/InformacionConferenciasInscripcion/<%= evento.ID_Evento %>" class="boton-MI1" title="Click para ver información" readonly>Información de conferencia o taller</a>
+                                    </div>
+                                    <div>
+                                        <button type="button"  class="boton-MI" title="Click para cancelar" id="Seguro" readonly onclick="cancelarInscripcion('<%= evento.ID_Evento %>')">Cancelar Inscripción</button>
+                                    </div>
+                                </div>
+
+                                <div class="contenedor-tabla-blanco-ME">
+                                    <hr class="lineahorizontal-centradaME">
+                                </div> 
+                            </th>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        function cancelarInscripcion(id){
+        Swal.fire({
+                title: '¿Seguro que desea cancelar la inscripcion?',
+                text: "",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: '¡Sí, cancelar inscripcion!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    ///timer antes de ejecutar esta linea de codigo
+                    setTimeout(function() {
+                window.location="/CancelarInscripcion/"+id;},1000)
+                ////
+                Swal.fire(
+                'Cancelado!',
+                'Se ha cancelado su inscripcion',
+                'success',
+                )
+            }
+        })}
+        ;
+        </script>
+
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <% if (typeof alert != "undefined") { %>
+            <script>
+                Swal.fire({
+                    title: '<%= alertTitle %>',
+                    text: '<%= alertMessage %>',
+                    icon: '<%= alertIcon %>',
+                    showConfirmButton: '<%= showConfirmButton %>',
+                    timer: '<%= timer %>'
+                })
+            </script>
+        <% } %>
+</body>
+</html>

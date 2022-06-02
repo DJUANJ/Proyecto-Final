@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="e">
+<head>
+    <meta charset="UTF-8">
+    <!--enlaces del frontend-->
+    <link rel="shortcut icon" href="/static/img/logo.png" type="image/x-icon">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <!--terminan enlaces del frontend-->
+    <title>Inicio</title>
+</head>
+<body>
+    <header>
+        <div class="contenedor-logo">
+            <!--Enlace frontend-->
+            <img src="/static/img/logo.png" class="logo">
+            <!--termina enlace frontend-->
+        </div>
+        <div class="contenedor-titulo">
+            <p class="titulo-principal">Academic Events</p>
+        </div>
+        <div class="contenedor-botones">
+            <div class="boton-is"><a href="/Login">Iniciar sesión</a></div>
+            <div class="boton-registro"><a href="/Registro">Registrarse</a></div>
+        </div>
+    </header>
+
+    <div class="presentacion">
+        <div>
+            <!--Enlace frontend-->
+            <img src="/static/img/sobre.png" class="imagen-presentacion">
+            <!--termina enlace frontend-->
+        </div>
+        <div class="contenedor-texto">
+            <p class="texto">Es una herramienta que brinda sus servicios para la gestión de eventos académicos.</p>
+        </div>
+    </div>
+    <br>
+<!--Formulario de prueba-->
+<form action="/search" method="post" autocomplete="off">
+    
+    <div class="evento">
+        <div class="contenedor-buscador">
+            <p class="margen">Filtrar evento por:</p>
+            <select id="cmbfiltrar" name="filtrar" class="combobox-filtrar" required>
+                <option value="" disabled selected>Seleccionar</option>
+                <option value="Nombre">Nombre</option>
+                <option value="Fecha">Fecha</option>
+                <option value="Estado">Estado</option>
+            </select>
+
+            <input type="text" id="txtBuscarEvento" name="bucarEvento" placeholder="Buscar" class="textbox-buscar" required>
+            <!--Enlace frontend-->
+            <input type="image"  class="lupa" value="buscar" img src="/static/img/lupa.png" >
+            <!--termina enlace frontend-->
+        </div>
+
+        <!--boton limpiar filtro configurado-->
+        <a  href="/" id="btnlimpiarfiltro" class="boton-limpiar" title="Click para limpiar filtro de búsqueda">Limpiar filtro</a>
+        <!--Aqui termina el boton limpiar filtro-->
+
+
+
+        <div class="contenedor-tabla">
+            <table class="tabla" id="lista-eventos" >		
+                <thead>
+                    <tr>
+                        <th class="celdas">Nombre del evento</th>
+                        <th class="celdas">Fecha</th>
+                        <th class="celdas">Estado</th>
+                    </tr>
+                </thead>
+                <tbody id="contenido" class="contenido-Principal">
+                    <% r.forEach((evento)=> { %>
+                        <tr>
+                            <td><%= evento.Nombre_Evento%></td>
+                            <td><%= evento.Fecha_Inicio.toISOString().split('T')[0] %></td>
+                            <td><%= evento.Descripcion%></td>
+                            
+                        </tr>
+                    <% }) %>
+                    
+                </tbody>
+            </table>
+        </div>
+        <!--Enlace frontend-->
+        <img src="/static/img/eventos.png" class="imagen-eventos">
+        <!--termina enlace frontend-->
+    </div>
+</form>
+
+<footer class="contenedor-footer-principal">
+    <h2 class="titulo-final">&copy; Grupo #4</h2>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,167 @@
+///Jorge Requerimos xlsx para manejo de documentos excel
+const XLSX= require('xlsx');
+
+
+///Jorge Funcion Leer Excel 
+function leerExcel(ruta,idEventoCreado){
+    const workbook=XLSX.readFile('./Frontend/img_Eventos/'+ruta);
+    const workbookSheets=workbook.SheetNames;
+    const sheet= workbookSheets[0];
+    const dataExcel= XLSX.utils.sheet_to_json(workbook.Sheets[sheet]);
+    //console.log(dataExcel)
+    for (const itemFila of dataExcel){
+        //console.log(itemFila['Nombre'])
+        //console.log(itemFila['Correo'])
+        var nombre=itemFila['Nombre'];
+        var correo=itemFila['Correo'];
+        conexion.query('INSERT INTO lista_blanca SET?',{ID_Evento:idEventoCreado,Email_Participante:correo,Nombre_Participante:nombre},
+        async(error,results)=>{
+            if(error){
+                console.log('Error al escribir excel en la base de datos')
+            }else{
+                console.log('Excel escrito Correctamente')
+            }
+        })
+
+    }
+}
+
+////
+
+
+////Actualizar este metodo 
+
+//Metodo Crear Evento
+app.post('/OrganizarEvento',uploadE.fields([{ name: 'Galeria', maxCount: 10 }, { name: 'generarLista', maxCount: 1 }]),(req, res)=>{
+    //solicita la variable de inicio de sesion 
+    if(req.session.loggedin){
+        //si la variable es verdadera ingresa a la pagina
+        var EmailU = req.session.email;
+        conexion.query(`SELECT ID_Usuario FROM registro_usuario WHERE Email_Usuario ='${EmailU}'`, (errorr, resul)=>{
+            //Se setea Con los valores del query con la info del organizador el id
+            var Idorganizador = resul[0].ID_Usuario; 
+            ///Se traen los Valores del formulario para crear el evento
+            const nombre = req.body.NombreEvento
+            const institucion = req.body.institucion
+            const descripcion = req.body.descripcionEvento
+            const fechainicio = req.body.fechaInicio
+            const fechafinal = req.body.fechaFinal
+            ///arreglo de imagenes
+            const imagenes = req.files['Galeria'];
+            ////Recibe el excel 
+            var excel="";
+            try{
+                listablanca = req.files['generarLista'];
+                excel=listablanca[0].filename
+            console.log(excel);
+            }catch(error){
+                console.log("Error No se Subio ningun excel")
+            }
+    
+            const tipoEvento = req.body.tipoEvento;
+            const FechaActual = new Date()
+            var fecha = FechaActual.getFullYear() + '-' + ( FechaActual.getMonth() + 1 ) + '-' + FechaActual.getDate();
+            var estado_evento = new Number();
+            
+            // validamos las fechas
+            if(fecha.valueOf()>fechainicio.valueOf()){
+                console.log('Este es el if de error de fecha')
+                res.render('OrganizarEvento', {
+                    login: true,
+                    User: req.session.name,
+                    ID: req.session.id, 
+                    fotoUser: req.session.fotoUser,
+                    email: req.session.email,
+                    alert: true,
+                    alertTitle: "Error en la fecha",
+                    alertMessage: "No se puede crear un evento con una fecha iniicial anterior a la actual",
+                    alertIcon: 'error',
+                    showConfirmButton:false,
+                    timer:3500,
+                    ruta:''
+                })
+            }else{            
+                console.log('Este es el if de de validacion')
+                if(fecha.valueOf()==fechainicio.valueOf()){
+                    estado_evento= 1;
+                }else{
+                    estado_evento= 2;
+                }
+
+                if(tipoEvento =='Abierto'){
+                    TipoEventoFinal= 1;
+                }else if(tipoEvento=='Cerrado'){
+                    TipoEventoFinal= 2;
+                }
+
+                conexion.query('INSERT INTO eventos SET ?', {ID_Organizador:Idorganizador,Nombre_Evento:nombre, Institucion:institucion, Descripcion_Evento:descripcion, 
+                    ID_Tipo:TipoEventoFinal, Fecha_Inicio:fechainicio, Fecha_Final:fechafinal, ID_Estado:estado_evento}, async(error, results)=>{
+                        if(error){
+                            console.log(error);
+                        }else{
+                            //buscamo el ultimo ID_Evento en la base de datos (Fue el que crceamos en la consulta anterior)
+                            conexion.query('SELECT ID_Evento FROM eventos WHERE ID_Evento = (SELECT max(ID_Evento) FROM eventos)',(error,resulta)=>{
+                                if(error){
+                                    console.log(error);
+                                }else{
+                                    imagenes.forEach(element => {
+                                        conexion.query('INSERT INTO imagen_evento set ?',{ID_Evento:resulta[0].ID_Evento,Url_Evento:element.filename}, (error, resultIMG)=>{
+                                            if(error){
+                                                console.log(error)
+                                            }else{
+                                                ///
+                                                const idEventoExcel=resulta[0].ID_Evento;
+                                             //// Si se sube documento
+                                                if(excel !=""){
+                                                    leerExcel(excel,idEventoExcel);
+                                                    fs.unlink('./Frontend/img_Eventos/'+excel,function(err){
+                                                        if(err) return console.log(err);
+                                                        console.log('file deleted successfully');
+                                                        }); 
+                                                }
+
+                                             ///
+                                            }
+                                            
+                                        });
+                                
+                                    });
+                                }
+                            });
+            
+                            res.render('OrganizarEvento', {
+                                login: true,
+                                User: req.session.name,
+                                ID: req.session.id, 
+                                fotoUser: req.session.fotoUser,
+                                email: req.session.email,
+                                alert: true,
+                                alertTitle: "Evento creado",
+                                alertMessage: "El evento ha sido creado con éxito",
+                                alertIcon: 'success',
+                                showConfirmButton:false,
+                                timer:1500,
+                                ruta:'Menu'
+                            })
+                            
+                        }
+                    })
+            } 
+        })
+        
+    }else{
+        conexion.query("SELECT * FROM eventos INNER JOIN estado_evento on eventos.ID_Estado = estado_evento.ID_Estado WHERE eventos.ID_Estado < 4 AND eventos.ID_Tipo < 2", (error, result)=>{
+            if(error){
+                throw error
+            }else{
+                //enviamos el resultado de la consulta y lo almacenamos en una variable del mismo nombre
+                res.render('principal', {r:result,
+                login: false
+                });
+            }
+        });
+    }
+    
+    
+    
+});

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--enlaces del frontend-->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/static/img/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+    <!--terminan enlaces del frontend-->
+    <title>Estadísticas de eventos</title>
+</head>
+<body>
+    <header>
+        <div class="contenedor-logo">
+            <!--Enlace frontend-->
+            <a href="/MisEventos" title="Volver"><img src="/static/img/atras.png" class="logo"></a>
+            <!--termina enlace frontend-->
+        </div>
+        <div class="contenedor-titulo-EE">
+            <p class="titulo-principal">Estadísticas de eventos</p>
+        </div>
+    </header>
+    
+    <section class="posicion-EE">
+
+        <div class="posicion-infoEE">
+            <!--nombre e imagen principal del evento-->
+            <p class="text1-EE">Evento: <%= EnventoNombre %></p>
+            <img src="/filesE/<%= img %>" class="imagen1-EE" alt="">
+            <!--nombre e imagen principal del evento-->
+            <p class="text2-EE">Conferencias/Talleres: </p>
+            <div class="contenedor-tabla-EE">
+                <table class="tabla-EE" id="lista-eventos">		
+                    <thead>
+                        <tr>
+                            <th> </th>
+                        </tr>
+                    </thead>
+                    <tbody id="contenido" class="contenido-Principal">
+                        <% listCOT.forEach((CoT)=> { %>
+                            <tr>
+                                <td>
+                                    <p class="text3-EE"><%= CoT.Nombre_Conferencia %></p>
+                                </td>
+                            </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+            </div>
+            
+        </div>
+
+        <div class="posicion-grafEE" >
+            <!--agregar el total de participantes inscritps en el evento-->
+            <p class="text4-EE">Total de participantes inscritos en el evento: <%= PartiEvento %></p>
+            <!--agregar el total de participantes inscritps en el evento-->
+
+            <hr class="linea-E">
+
+            <!--grafica-->
+            <br><br>
+            <canvas id="MiGrafica" width="250" height="100"></canvas>
+            <div class="contenedor-blanco-EE"></div>
+            <canvas id="MiGrafica1" width="250" height="100"></canvas>
+        </div>
+</section>    
+</body>
+
+<script>
+    var miCanvas = document.getElementById("MiGrafica").getContext("2d");
+    
+    var myChart = new Chart(miCanvas, {
+            type:'bar',
+            data:{
+                datasets: [{
+                    label: "Gráfica de conferencias/talleres con más participantes",
+                                                        backgroundColor: "#489c95",
+                    data:[<%= listaPartCoT %>]
+                }]
+            },
+            
+        })
+        <% listaCoT.forEach((element)=> { %>
+            myChart.data['labels'].push("<%=element%>")
+        <% }) %>
+        myChart.update()
+</script>
+
+
+<script>
+    var miCanvas1 = document.getElementById("MiGrafica1").getContext("2d");
+    
+    var chart1 = new Chart(miCanvas1,{
+        type:"doughnut",
+        data:{
+            labels:["Conferencia","Taller"],
+            datasets:[
+                {
+                    label: "Gráfica de tipos de reunion",
+                    backgroundColor: ["#2a4374","#489c95"],
+                    data:[<%= totalConferencia %>,<%= totalTaller %>]
+                }
+            ]
+        }
+    })
+</script>
+</html>

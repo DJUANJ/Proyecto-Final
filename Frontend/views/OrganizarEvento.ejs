@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--enlaces del frontend-->
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="/static/img/logo.png" type="image/x-icon">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <!--terminan enlaces del frontend-->
+    <title>Organizar evento</title>
+</head>
+<body>
+    <header>
+        <div class="contenedor-logo">
+            <!--Enlace frontend-->
+            <a href="/Menu" title="Volver"><img src="/static/img/atras.png" class="logo"></a>
+            <!--termina enlace frontend-->
+        </div>
+        <div class="contenedor-titulo">
+            <p class="titulo-principal">Organizar evento</p>
+        </div>
+    </header>
+
+    <div class="cuerpo">
+        <div class="conte-formulario-OE1">
+            <div class="conte-formulario-OE">
+                <form action="/OrganizarEvento" id="organizar-evento" method="POST" enctype="multipart/form-data" autocomplete="off">
+                    <div class="control1-AC">
+                        <p class="label-AC">Nombre del evento:</p>
+                        <input type="text" id="txtNombreEvento" name="NombreEvento" class="textbox-AC" required>
+                    </div>
+                    <div class="control1-AC">
+                        <p class="label-AC">Institución:</p>
+                        <input type="text" id="txtInstitucion" name="institucion" class="textbox-AC" required>
+                    </div>
+                    <div class="control2-AC">
+                        <p class="label-AC">Descripción del evento:</p>
+                        <textarea name="descripcionEvento" id="txtDescripcionEvento" cols="65" rows="3" 
+                        style="font-size: 1.4vw; font-family: cambria;"></textarea> 
+                    </div>
+
+                    <div class="control1-AC">
+                        <p class="label-AC">Tipo de evento:</p>
+                        
+                        <!--Boton "generar" programado-->
+                        <select id="cmbTipoEvento" name="tipoEvento" class="textbox-fecha1-AC" onChange="enableSubmit(this)">
+                            <option disabled selected>Seleccionar</option>
+                            <option value="Abierto">Abierto</option>
+                            <option value="Cerrado">Cerrado</option>
+                        </select>
+                        <div class="boton-descargarf" name="Formato">
+                            <a href='/download' title="Descargar el formato de lista blanca">Descargar formato</a>
+                        </div>
+                        <input type="file" class="boton-generar" name="generarLista" value="Generar Lista"  accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" disabled>                  
+                        <!--Aqui termina-->
+                        
+                    </div>
+
+                    <div class="control1-AC">
+                        <p class="label-AC">Fecha de inicio:</p>
+                        <input type="date" id="txtFechaInicio" name="fechaInicio" class="textbox-fecha1-AC" required>
+
+                        <!--Deshabilitar el boton cuando la fecha inicial sea mayor que la fecha final-->
+                        <p class="label-AC2">Fecha de finalización:</p>
+                        <input type="date" id="txtFechaFinal" name="fechaFinal" class="textbox-fecha2-AC" onchange ="ValidarFechas()" required>
+                    </div>
+
+                    <div class="control1-AC">
+                        <div class="tapa"></div>
+                        <label for="cargarImagen"><img src="/static/img/carpeta.png" class="carpeta-imagen"></label>
+                        <input type="file" multiple accept="image/*" id="cargarImagen" name="Galeria" required>
+                    </div>
+
+                    <div class="control1-AC">
+                        <input type="submit" class="boton-generar-AC" id="btnevento" value="Generar evento" title="Click para generar evento">
+                    </div>
+                </form>            
+            <!--Aqui termina el boton cuando la fecha inicial sea mayor que la fecha final-->
+            </div>
+        </div>
+    </div>
+
+
+<!--Javascript del boton generar lista de excel-->
+<script>
+    function enableSubmit(e){
+        document.getElementsByName("generarLista")[0].disabled=e.selectedIndex==1;
+    }
+</script>
+<!--Aqui termina el javascript del boton generar-->
+
+<!--Javascript para la validacion de las fechas-->
+<script>
+    function ValidarFechas(){
+        var fechainicial = document.getElementById("txtFechaInicio").value;
+        var fechafinal = document.getElementById("txtFechaFinal").value;
+
+        if(fechainicial > fechafinal){
+            alert("La fecha final debe ser posterior a la fecha inicial");
+            document.getElementById("btnevento").disabled= true;
+        } else{
+            document.getElementById("btnevento").disabled= false;
+        }
+    }
+ </script>
+<!--Aqui termina el javascript para la validacion de las fechas-->
+
+
+    <!--Aqui empieza el codigo para la ventana emergente de creacion de evento-->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <% if (typeof alert != "undefined") { %>
+        <script>
+            Swal.fire({
+                title: '<%= alertTitle %>',
+                text: '<%= alertMessage %>',
+                icon: '<%= alertIcon %>',
+                showConfirmButton: '<%= showConfirmButton %>',
+                timer: '<%= timer %>'
+            }).then(()=>{
+                window.location='<%= ruta %>'
+            })
+        </script>
+      <% } %>
+
+
+</body>
+</html>

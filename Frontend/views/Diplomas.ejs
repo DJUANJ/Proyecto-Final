@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--enlaces del frontend-->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/static/img/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <!--terminan enlaces del frontend-->
+    <title>Generación de diplomas</title>
+</head>
+<body>  
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script language="javascript" type="text/javascript">
+    var nFirmas=0
+    var cargosfirma=[];
+    var nombresfirma=[];
+</script>
+    <header>
+        <div class="contenedor-logo">
+            <!--Enlace frontend-->
+            <a href="javascript:history.back();" title="Volver"><img src="/static/img/atras.png" class="logo"></a>
+            <!--termina enlace frontend-->
+        </div>
+        <div class="contenedor-titulo-diploma">
+            <p class="titulo-principal">Generación de diplomas</p>
+        </div>
+    </header>
+    <div class="contenedor-GD">
+        <div class="conte-diploma">
+            <div class="conte-tabla-diploma">
+                <table class="tabla-diplomas" id="tabla-diplomas">	
+                    <tbody id="body-diplomas">
+<!-- Ciclo para dibujar los diplomas -->
+<%contador = 0%>
+<%for(itemfila of r){ %>
+    <%contador = contador+1 %>
+<tr>
+    <th>
+        <div class="cien-GD">
+            <div class="conte-dentrotabla">
+                <div class="barra-superior"></div>
+                <div class="barra-ovalo">
+                    <img src="/static/img/logo.png" class="logo-GD">
+                    <p>Otorga el presente:</p>
+                </div>
+            </div>
+            <div class="conte-palabradiploma">
+                <h1 style="font-size: 2.7vw;">DIPLOMA</h1>
+            </div>
+            <div class="contenido-GD">
+                <p style="float: left; margin-top: 10px;">A:</p>
+                <!--en el value-->
+                <input type="text" id="txtNombreGD" name="NombreGD" class="textbox-GD" value="<%=itemfila['Nombre_Usuario']%>" readonly>
+                <!--en el value-->
+            </div>
+            <div class="contenido2-GD">
+                <p>Por su destacada participación en la conferencia:</p>
+                <!--en el value va el nombre de la conferencia-->
+                <input type="text" id="txtNombreGD" name="NombreGD" class="textbox1-GD" value="<%=itemfila['Nombre_Conferencia']%>" readonly>
+                <!--en el value va el nombre de la conferencia-->
+            </div>
+            <div class="contenido1-GD">
+                <p style="float: left; margin-top: 10px;">A través de la modalidad:</p>
+                <!--en el value-->
+                <input type="text" id="txtNombreGD" name="NombreGD" class="textbox2-GD" value="<%=itemfila['Descripcion_Modalidad']%>" readonly>
+                <!--en el value-->
+                <p style="float: left; margin-top: 10px;">, en la fecha:</p>
+                <!--en el value-->
+            <input type="text" id="txtNombreGD" name="NombreGD" class="textbox2-GD" value="<%=itemfila['F_Final_Conferencia'].toISOString().split('T')[0]%>" readonly>
+                <!--en el value-->
+            </div>
+
+            <div class="conte-tablafirmas">
+                <table id="tabla-firmas" class="tabla-firmas" CELLSPACING=9>
+                    <thead>
+                        <tr id="<%=contador%>">
+                           <!-- <th >
+                                <input type="text" id="txtFirma" name="Firma" class="textbox-firma" readonly>
+                                <p style="font-size: 0.9vw; font-weight: lighter;"><%=rr[0].organizador%></p>
+                                <p style="font-size: 0.9vw; font-weight: lighter;">Organizador del evento</p>
+                            </th>-->
+                        </tr>
+                        
+                    </thead>
+                </table>
+            </div>
+            <div class="barra-inferior"></div>
+            <div class="barra-inferior2"></div>
+        </div>
+    </th>
+</tr>
+<% }%>
+<!-- Ciclo para dibujar los diplomas -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="contenedor-firma">
+            <div class="contenedor-firma-datos">
+                <p class="texto2-diploma">Nombre del evento: <%=rr[0].Nombre_Evento%> </p>
+                <p class="texto2-diploma">Total de participantes: <%=contador%></p>
+                <a href="/ListaDeParticipantesPresentes/<%=rr[0].ID_Evento%>/<%=r[0].ID_Conferencia %>" class="boton-diploma-participantes" title="Click para ver participantes de la conferencia">Ver lista de participantes</a>
+            </div>
+
+            <div class="contenedor-firma-agregar">
+                <p class="label-diploma">Ingrese el cargo y el nombre complento del firmante:</p>
+                <div class="diploma-botones">
+                    <input type="button" id="activar" class="boton-diploma-agregar"  onclick="agregar()" value="Agregar firma">
+                    <a href="#" class="boton-diploma-eliminar" title="Click para eliminar Eliminar firma" onclick="removerFirma('<%=contador%>')">Eliminar firma</a>
+                </div>
+                <div class="diploma-nombre">
+                    <input type="text" id="cargodiploma" class="textbox-diploma" placeholder="Cargo del firmante" disabled> 
+                </div>
+                <div class="diploma-nombre">
+                    <input type="text" id="nombrediploma" class="textbox-diploma" placeholder="Nombre completo del firmante" disabled>
+                </div>
+                <div class="diploma-botones">
+                    <input type="button" id="btnconfirmardiploma" name="confirmardiploma" class="botonDisableconfirmar" onclick="insertarFirma('<%=contador%>')" title="Click para confirmar" value="Confirmar" disabled="" >
+                    <input type="submit" id="btncancelardiploma" name="cancelardiploma" class="botonDisablecancelar" title="Click para cancelar" value="Cancelar" disabled="">
+                </div>
+            </div>
+
+            <a class="boton-diploma-generar" title="Click para generar diploma" id="gene" onclick="enlace()" style="cursor: pointer" target="_blank">Generar diplomas</a>
+        </div>
+    </div>
+
+<!--deshabilitar boton de confirmar y de cancelar-->
+
+
+
+<script>
+    function agregar(){
+        
+        let button1= document.getElementById('btncancelardiploma')
+        let button= document.getElementById('btnconfirmardiploma')
+        if (document.getElementById('cargodiploma').disabled){
+            button.disabled =false;
+            button.className="boton-diploma-confirmar";
+            button.title= "Haga click para confirmar"
+            button1.disabled =false;
+            button1.className="boton-diploma-cancelar";
+            button1.title= "Haga click para cancelar"
+            document.getElementById("cargodiploma").disabled = false;
+            document.getElementById("nombrediploma").disabled = false;
+        
+        } else {
+            button.disabled =true;
+            button.className="botonDisableconfirmar";
+            button.title= "Confirmar"
+            button1.disabled =true;
+            button1.className="botonDisablecancelar";
+            button1.title= "Cancelar"
+            document.getElementById("cargodiploma").disabled = true;
+            document.getElementById("nombrediploma").disabled =true;
+        }
+
+    }
+</script>
+<!--deshabilitar boton de confirmar y de cancelar-->
+<script>
+function insertarFirma(n){
+
+   if(nFirmas<3) {
+       nFirmas=nFirmas+1
+   var nombre = document.getElementById('nombrediploma').value
+   var cargo = document.getElementById('cargodiploma').value
+   cargosfirma.push(cargo)
+   nombresfirma.push(nombre)
+for(i=n;i>=1;i--){
+    console.log(i)
+    
+ elemento = `<th id="`+cargo+i+`" onclick="accion('`+cargo+`','`+nombre+`')" style="cursor: pointer">
+                <input type="text" id="txtFirma" name="Firma" class="textbox-firma" readonly>
+                <p style="font-size: 0.9vw; font-weight: lighter;">`+nombre+`</p>
+                <p style="font-size: 0.9vw; font-weight: lighter;">`+cargo+`</p>
+            </th> ` 
+
+    document.getElementById(i).insertAdjacentHTML('afterbegin',elemento)
+    console.log(elemento)
+
+   
+    }
+ document.getElementById('nombrediploma').value="";
+ document.getElementById('cargodiploma').value="";
+ agregar();
+ }else{
+    Swal.fire('Solo se permiten 3 firmas')
+    agregar();
+ }
+ console.log(nFirmas)
+ console.log(cargosfirma)
+ console.log(nombresfirma)
+}
+</script>
+
+<script>
+    function cancel(){
+    document.getElementById('nombrediploma').value="";
+    document.getElementById('cargodiploma').value="";
+    agregar()
+    }
+</script>
+
+<script>
+    function accion(cargo,nombre){
+    document.getElementById('nombrediploma').value=nombre;
+    document.getElementById('cargodiploma').value=cargo;
+    }
+</script>
+<script>
+    function removeItemFromArr ( arr, item ) {
+    var i = arr.indexOf( item );
+ 
+    if ( i !== -1 ) {
+        arr.splice( i, 1 );
+    }
+}
+</script>
+
+<script>
+    function removerFirma(n){
+        var cargo= document.getElementById('cargodiploma').value;
+        var nombre=document.getElementById('nombrediploma').value;
+        if(cargo!=""){
+        for(i=n;i>=1;i--){
+        document.getElementById(cargo+i).remove()
+    }
+    document.getElementById('nombrediploma').value="";
+    document.getElementById('cargodiploma').value="";
+    agregar();  
+    nFirmas=nFirmas-1;
+    removeItemFromArr ( cargosfirma, cargo );
+    removeItemFromArr ( nombresfirma,nombre );
+    console.log(nFirmas)
+    console.log(cargosfirma)
+    console.log(nombresfirma)
+        }else{
+            Swal.fire('No hay firma que eliminar')
+        }
+}
+</script>
+<script>
+    function enlace(){
+    const enlace = document.getElementById("gene")
+    if (nFirmas==2){
+        enlace.href="/DescargarDiploma/"+nFirmas+"/"+nombresfirma[0]+"/"+cargosfirma[0]+"/"+nombresfirma[1]+"/"+cargosfirma[1]+"/<%=r[0].ID_Conferencia%>/<%=r[0].Nombre_Conferencia%>"
+    }else{
+        if(nFirmas==3){
+            enlace.href="/DescargarDiploma/"+nFirmas+"/"+nombresfirma[0]+"/"+cargosfirma[0]+"/"+nombresfirma[1]+"/"+cargosfirma[1]+"/"+nombresfirma[2]+"/"+cargosfirma[2]+"/<%=r[0].ID_Conferencia%>/<%=r[0].Nombre_Conferencia%>"
+        }else{
+            if (nFirmas==1){
+            enlace.href="/DescargarDiploma/"+nFirmas+"/"+nombresfirma[0]+"/"+cargosfirma[0]+"/<%=r[0].ID_Conferencia%>/<%=r[0].Nombre_Conferencia%>"
+        }else{
+            
+            Swal.fire('Debe agregar al menos una firma')
+        }
+    }
+}
+    
+    }
+</script>
+
+
+</body>
+</html>
+
+

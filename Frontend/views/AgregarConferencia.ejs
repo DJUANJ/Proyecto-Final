@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--enlaces del frontend-->
+    <link rel="shortcut icon" href="/static/img/logo.png" type="image/x-icon">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <!--terminan enlaces del frontend-->
+    <title>Agregar conferencia o taller</title>
+</head>
+<body>
+    <header>
+        <div class="contenedor-logo">
+            <!--Enlace frontend-->
+            <a href="/MisEventos" title="Volver"><img src="/static/img/atras.png" class="logo"></a>
+            <!--termina enlace frontend-->
+        </div>
+        <div class="contenedor-titulo-IC">
+            <p class="titulo-principal-IC">Agregar conferencia o taller</p>
+        </div>
+        <div class="contenedor-nombreEvento-IC">
+            <!--Aqui se debe traer el nombre del evento-->
+            <p>Evento: <%= Evento %></p>
+            <!--Aqui se debe traer el nombre del evento-->
+        </div>
+    </header>
+
+    <div class="cuerpo-AC">
+        <div class="conte-formularioAC1">
+            <div class="conte-formularioAC">
+                <form action="/CrearConferenciaTaller" method="post" autocomplete="off">
+                    <div class="control1-AC">
+                        <p class="label-AC">Fecha de inicio:</p>
+                        <input type="date" id="txtFechaInicioAC" name="FechaInicioAC" class="textbox-fecha1-AC" required>
+
+                        <p class="label-AC2">Fecha de finalización:</p>
+                        <input type="date" id="txtFechaFinalAC" name="FechaFinalAC" class="textbox-fecha2-AC" required>
+                    </div>
+
+                    <div class="control1-AC">
+                        <p class="label-AC">Hora de inicio:</p>
+                        <input type="time" id="txtHoraInicioAC" name="HoraInicioAC" class="textbox-fecha1-AC" required>
+
+                        <p class="label-AC2">Hora de finalización:</p>
+                        <input type="time" id="txtHoraFinalAC" name="HoraFinalAC" class="textbox-fecha2-AC" required>
+                    </div>
+
+                    <div class="control1-AC">
+                        <p class="label-AC">Tema:</p>
+                        <input type="text" id="txtTema" name="TemaAC" class="textbox-AC" required>
+                    </div>
+
+                    <div class="control1-AC">
+                        <p class="label-AC">Correo del encargado:</p>
+                        <input type="email" id="txtEncargadoAC" name="EncargadoAC" class="textbox-AC" required>
+                    </div>
+
+                    <div class="control1-AC">
+                        <p class="label-AC">Tipo de reunión:</p>
+                        <select id="cmbTipoReunion" name="TipoReunion" class="textbox-fecha1-AC" required>
+                            <option value="" disabled selected>Seleccionar</option>
+                            <option value="Conferencia">Conferencia</option>
+                            <option value="Taller">Taller</option>
+                        </select>
+
+                        <p class="label-AC2">Modalidad:</p>
+                        <select id="cmbModalidad" name="Modalidad" class="textbox-fecha2-AC" required>
+                            <option value="" disabled selected>Seleccionar</option>
+                            <option value="Virtual">Virtual</option>
+                            <option value="Presencial">Presencial</option>
+                        </select>
+                    </div>
+
+                    <div class="control2-AC">
+                        <p class="label-AC">Descripción:</p>
+                        <textarea name="DescripcionConferencia" id="taDescripcionConferencia" cols="65" rows="3" 
+                        style="font-size: 1.4vw; font-family: cambria;"></textarea> 
+                    </div>
+
+                    <div class="control1-AC">
+                        <p class="label-AC">Limitar participantes:</p>
+                        <select id="cmbLimitarParticipantes" name="LimitarParticipantes" class="textbox-fecha1-AC" required onchange="comprobarOption()">
+                            <option value="" disabled selected>Seleccionar</option>
+                            <option value="Si">Si</option>
+                            <option value="No">No</option>
+                        </select>
+
+                        <p class="label-AC2">Máximo de participantes:</p>
+                        <input type="text" id="txtMaximoParticipantes" name="MaximoParticipantes" class="textbox-maximo-AC" required disabled>
+                    </div>
+
+                    <div class="control1-AC">
+                        <p class="label-AC">Enlace o lugar:</p>
+                        <input type="text" id="txtEnlace" name="EnlaceAC" class="textbox-AC" required>
+                    </div>
+
+                    <div class="control1-AC">
+                        <button class="boton-generar-AC" title="Click para generar conferencia">Generar conferencia</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+     <!--Aqui empieza el codigo para la ventana emergente de creacion de Conferencia o Taller-->
+     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+     <% if (typeof alert != "undefined") { %>
+         <script>
+             Swal.fire({
+                 title: '<%= alertTitle %>',
+                 text: '<%= alertMessage %>',
+                 icon: '<%= alertIcon %>',
+                 showConfirmButton: '<%= showConfirmButton %>',
+                 timer: '<%= timer %>'
+             }).then(()=>{
+                 window.location='<%= ruta %>'
+             })
+         </script>
+       <% } %>
+    
+</body>
+</html>
+
+<script>
+    function comprobarOption(){
+        var opcion = document.getElementById("cmbLimitarParticipantes").value;
+
+        if(opcion == "Si"){
+            document.getElementById("txtMaximoParticipantes").disabled = false;
+            document.getElementById("txtMaximoParticipantes").focus();
+        }else{
+            document.getElementById("txtMaximoParticipantes").disabled = true;
+            document.getElementById("txtEnlace").focus();
+            document.getElementById("txtMaximoParticipantes").value = "";
+        }
+    }
+</script>
+
+

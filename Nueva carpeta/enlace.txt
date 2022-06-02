@@ -1,0 +1,9 @@
+app.get('/download', function(req, res){
+    var file ='./Frontend/img_Eventos/Participantes.xlsx';
+    res.download(file); // Set disposition and send it.
+});
+
+
+
+
+<a href='/download'>Descargar Formato</a>

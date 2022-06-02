@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--enlaces del frontend-->
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="/static/img/logo.png" type="image/x-icon">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!--terminan enlaces del frontend-->
+    <title>Participantes presentes</title>
+</head>
+<body>
+    <header>
+        <div class="contenedor-logo">
+            <!--Enlace frontend-->
+            <a href="/InformacionConferencias/<%=idEvento%>" title="Volver"><img src="/static/img/atras.png" class="logo"></a>
+            <!--termina enlace frontend-->
+        </div>
+        <div class="contenedor-titulo-PI">
+            <p class="titulo-principal-PI">Lista de participantes presentes</p>
+        </div>
+        <div class="contenedor-nombre-PI">
+            <!--Aqui se debe traer el nombre del evento-->
+            <p>Evento: <%= Evento %></p>
+            <!--Aqui se debe traer el nombre del evento-->
+            <a href="/DescargarListaConferencia/<%=IDCoT%>/<%= Evento %>" target="_blank"><img class="imagen-pdf-PI" src="/static/img/pdf.png" title="Descargar PDF" alt="Decargar PDF"/></a>
+        </div>
+    </header>
+
+    <div class="cuerpo-participantes-PI">
+        <div class="conte-participantes-PI">
+            <table class="tablahistorial" id="lista-historial">	
+                <thead>
+                    <tr>
+                        <th>
+                            
+                        </th>       
+                    </tr>
+                </thead>
+
+                <tbody id="contenido-historial">
+                    <% r.forEach((Participante)=> { %>
+                        <tr>
+                            <th>
+                                <div class="participante-individual">
+                                    <div class="participante-numero"> 
+                                        <!--Aqui se debe traer el numero-->
+                                        <p><%= contador=contador+1  %> </p>
+                                        <!--Aqui se debe traer el numero-->
+                                    </div>
+                                    <!--imagen frontend-->
+                                    <img class="participante-foto2" src="/files/<%= Participante.Fotografia_Usuario %>" title="Perfil" alt="Perfil">
+                                    <!--imagen frontend-->
+                                    <div class="participante-nombre2"> 
+                                        <!--Aqui se debe traer el nombre-->
+                                        <p><%= Participante.Nombre_Usuario %></p>
+                                        <!--Aqui se debe traer el nombre-->
+                                    </div>
+                                    <div class="check-inscripcion">
+
+                                        <!-- <%= f=0  %> -->
+                                        <!-- <%= ch=false  %> -->
+                                        <% if (rpar == ""){%>
+                                        <input type="checkbox"  onclick="javacript:AgregarEliminar('<%= IDCoT %>','<%=idEvento%>','<%= Participante.ID_Usuario %>');" name="asistencia" value="Marcar Asistencia" id="casistencia" style="border: solid 1.5px; border-color: black;">
+                                        <label class="label-inscripcion" for="asistencia">Marcar asistencia</label>
+                                        <% }%>
+                                        <% if (rpar != ""){%>
+                                            <% rpar.forEach((checkAI)=> { %>
+                                                <!-- <%= f=f+1  %> -->
+                                                <% if (Participante.ID_Usuario == checkAI.ID_Usuario){%>
+                                                    <!-- <%= ch = true  %> -->
+                                                    <input type="checkbox"  onclick="javacript:AgregarEliminar('<%= checkAI.ID_Conferencia %>','<%=idEvento%>','<%= Participante.ID_Usuario %>');" name="asistencia" checked="true" value="Marcar Asistencia" id="casistencia" style="border: solid 1.5px; border-color: black;">
+                                                    <label class="label-inscripcion" for="asistencia">Marcar asistencia</label>
+                                                <% } %>
+                                                <% if(f == t && ch != true) {%> 
+                                                    <input type="checkbox"  onclick="javacript:AgregarEliminar('<%= checkAI.ID_Conferencia %>','<%=idEvento%>','<%= Participante.ID_Usuario %>');" name="asistencia" value="Marcar Asistencia" id="casistencia" style="border: solid 1.5px; border-color: black;">
+                                                    <label class="label-inscripcion" for="asistencia">Marcar asistencia</label>
+                                                <% }%>
+                                            <% }) %>
+                                        <% }%>
+                                    </div>
+                                </div>
+                            </th>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script>
+        function AgregarEliminar(id,IdE,IDU){
+                window.location="/AgregarEliminarParticipacion/"+id+"/"+IdE+"/"+IDU;
+        }
+    </script>
+</body>
+</html>

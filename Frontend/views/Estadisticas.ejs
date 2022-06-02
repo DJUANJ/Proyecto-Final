@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--enlaces del frontend-->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/static/img/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <!--terminan enlaces del frontend-->
+    <title>Estadísticas</title>
+</head>
+<body>
+    <header>
+        <div class="contenedor-logo">
+            <!--Enlace frontend-->
+            <a href="/InformacionConferencias/<%=idE%>" title="Volver"><img src="/static/img/atras.png" class="logo"></a>
+            <!--termina enlace frontend-->
+        </div>
+        <div class="contenedor-titulo">
+            <p class="titulo-principal">Estadísticas</p>
+        </div>
+        <div>
+            <a href="/Diploma/<%=idconferencia%>/<%=nCot%>"  class="Boton-generarE" title="Click para generar diploma">Generar diplomas</a>
+        </div>
+    </header>
+    
+    <section class="posicion-E">
+
+        <div class="posicion-infoE">
+            <img src="/static/img/estadistica.png" class="imagen1-E" alt="">
+            <p class="text1-E">Lleva el control de la cantidad de participantes que asisten a tus eventos visualizándolo a través de gráficas.</p>
+            <img src="/static/img/diplomas.png" class="imagen1-E" alt="">
+            <p class="text1-E">Genera diplomas para los participantes de tus eventos.</p>
+        </div>
+
+        <div class="posicion-grafE" >
+            <p class="text2-E"><%=nE%></p>
+            <hr class="linea-E">
+            <p class="text2-E"><%=nCot%></p>
+
+            <table class="tablaEst" id="tabla-estadisticas"  BORDER CELLPADDING=10 CELLSPACING=0>		
+                <thead>
+                    <tr>
+                        <th class="celdasEst">Total de participantes inscritos</th>
+                        <th class="celdasEst">Total de participantes presentes</th>
+                    </tr>
+                </thead>
+                <tbody id="contenidoEst">
+                        <tr>
+                            <td class="contenido-Estadisticas"><%=pE%></td>
+                            <td class="contenido-Estadisticas"><%=pCoT%></td>
+                        </tr>
+                </tbody>
+            </table>
+
+            <!--grafica-->
+            <section class="container_grafico">
+                <div style=" width: 300px;  height: 300px; border-radius: 60%;  background-image: conic-gradient(var(--color_presentes)<%=pP%>%,
+                var(--color_nopresentes)<%=pP%>% <%=pNP%>%);"></div>
+                <div class="container-participantes">
+                    <div class="participantes_all">
+                        <div class="color_presentes"></div>
+                        <p class="participantes"><%=pP%> % Participantes presentes</p>
+                    </div>
+                    <div class="participantes_all">
+                        <div class="color_nopresentes"></div>
+                        <p class="participantes"><%=pNP%> % Participantes no presentes</p>
+                    </div>
+                <% if ( pE == 0){%>
+                    <p class="totalparticipantes">Total: 0%</p>
+                <% }%>
+                <% if ( pE != 0){%>
+                    <p class="totalparticipantes">Total: 100%</p>
+                <% }%>
+                </div>
+            </section>
+        </div>
+</section>    
+</body>
+</html>

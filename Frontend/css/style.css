@@ -1,0 +1,2988 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*------ PÁGINA PRINCIPAL ------*/
+header{
+    width: 100%;
+    height: 100px;
+    background: #ffffff;
+}
+
+/*logo*/
+.contenedor-logo{
+    width: 6%;
+    height: 6%;
+    margin-top: 5px;
+    margin-left: 20px;
+    position: absolute;
+}
+
+.logo{
+	width: 100%;
+	height: auto;
+}
+
+/*titulo*/
+.contenedor-titulo{
+    width: 35%;
+    height: 60px;
+    position: absolute;
+    margin-left: 10%;
+    margin-top: 12px;
+}
+
+.titulo-principal{
+    font-size: 4vw;
+    color: #2a4374;
+}
+
+/*botones*/
+.contenedor-botones{
+    width: 25%;
+    height: 50px;
+    position: absolute;
+    margin-top: 27px;
+    margin-left: 72%;
+}
+
+.contenedor-botones a{
+    font-size: 1.5vw;
+    text-decoration: none;
+    color: #ffffff;
+    display: block;
+    padding: 8px;
+    text-align: center;
+}
+
+.boton-is{
+    width: 48%;
+    height: 43px;
+    background: #489c95;
+    position: absolute;
+    border-radius: 5px;
+}
+
+.boton-registro{
+    width: 48%;
+    height: 43px;
+    background: #489c95;
+    position: absolute;
+    margin-left: 55%;
+    border-radius: 5px;
+}
+
+/* Pesentación */
+.presentacion{
+    width: 100%;
+    height: 335px;
+    background: #2a4374;
+}
+
+.imagen-presentacion{
+    width: 27%;
+    height: auto;
+	margin-top: 5px;
+    margin-left: 23%;
+	border-radius: 20px;
+    position: absolute;
+}
+
+.contenedor-texto{
+    width: 22%;
+    height: 100px;
+    position: absolute;
+    margin-left: 53%;
+    margin-top: 8%;
+}
+
+.texto{
+    font-size: 1.7vw;
+    color: #ffffff;
+	text-align: justify;
+}
+
+.evento{
+    width: 100%;
+    height: 330px;
+}
+
+.contenedor-buscador{
+    width: 70%;
+    height: 50px;
+    border: solid #000000 1px;
+    border-radius: 10px;
+    position: absolute;
+    margin-left: 3%;
+    margin-top: 20px;
+}
+
+.margen{
+    margin-left: 4%;
+    margin-top: 10px;
+    font-size: 1.5vw;
+    position: absolute;
+}
+
+.combobox-filtrar{
+    margin-left: 23%;
+    margin-top: 10px;
+    width: 25%;
+    border-radius: 5px;
+    border: solid #000000 1px;
+    font-size: 2vmin;
+    font-family: cambria;
+    padding: 5px;
+    background: #e7e6e6;
+}
+
+.textbox-buscar{
+    width: 39%;
+    margin-left: 2%;
+    padding: 5px;
+    background: #e7e6e6;
+    font-size: 2.1vmin;
+    font-family: cambria;
+    border-radius: 5px;
+    border: solid #000000 1px;
+    position: absolute;
+    margin-top: 10px;
+    outline: none;
+}
+
+.lupa{
+    width: 3%;
+    height: auto;
+    margin-left: 44%;
+    position: absolute;
+    margin-top: 10px;
+}
+
+.boton-limpiar{
+    width: 15%;
+    height: 40px;
+    background: #489c95;
+    margin-left: 78.5%;
+    margin-top: 20px;
+    position: absolute;
+    border-radius: 5px;
+    font-size: 1.3vw;
+    text-decoration: none;
+    color: #ffffff;
+    display: block;
+    padding: 8px;
+    text-align: center;
+    border-style: none;
+    font-family: cambria;
+}
+
+.contenedor-tabla{
+    width: 70%;
+    height: 260px;
+    position: absolute;
+    margin-left: 3%;
+    margin-top: 82px;
+    overflow-y: scroll;
+}
+
+.imagen-eventos{
+    width: 20%;
+    height: auto;
+    margin-left: 76.5%;
+    margin-top: 60px;
+}
+
+.celdas{
+	width: 12%;
+	height: 25px;
+	font-size: 1.5vw;
+    color: #2a4374;
+    background-color: #ffffff;
+}
+.contenido-Principal{
+    width: 12%;
+	height: 25px;
+	font-size: 1.1vw;
+    color: #000000;
+    text-decoration: none;
+    text-align: center;
+}
+
+.contenedor-footer-principal{
+    background-color: #ffffff;
+    width: 100%;
+    height: 20px;
+}
+
+.titulo-final{
+    font-size: 1vw;
+    text-align: center;
+}
+/*------ FINALIZA PÁGINA PRINCIPAL ------*/
+
+/*------ REGISTRO E INICIO DE SESIÓN ------*/
+/* Posición imagen y formulario */
+.posicion{
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+    background: #ffffff;
+}
+
+.posicion-imagen{
+    width: 60%;
+    margin-bottom: 10px;
+    height: 95vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.posicion-imagen > img{
+    margin-top: 53px;
+    width: 70%;
+    height: 73%;
+    object-fit: cover;
+
+}
+.posicion-formulario{
+    width: 40%;
+    height: 100vh;
+    text-align: center;
+    background-color: #2a4374;
+}
+
+/* Botón atrás */
+.volver{
+	width: 10%;
+	height: 10%;
+    text-align: left;
+}
+
+.boton-atras{
+	width: 70px;
+	height: 70px;
+}
+
+/* Estilo dentro del formulario */
+/* Títulos */
+.titulo{
+    font-size: 3.5vw;
+    margin-top: 10%;
+    margin-bottom: 5%;
+    color: #ffffff;
+}
+
+.titulologin{
+    font-size: 3.5vw;
+    margin-top: 28%;
+    margin-bottom: 8%;
+    color: #ffffff;
+}
+
+/*Textbox*/
+.textbox{
+	width: 60%;
+	font-size: 2vmin;
+	padding: 8px;
+	border-color: #d6d6d6;
+	border-radius: 5px;
+	outline: none;
+    margin-bottom: 20px;
+    font-family: cambria;
+}
+
+.textboxlogin{
+	width: 60%;
+	font-size: 2vmin;
+	padding: 8px;
+	border-color: #d6d6d6;
+	border-radius: 5px;
+	outline: none;
+    margin-bottom: 30px;
+    font-family: cambria;
+}
+
+.textboxlogin2{
+	width: 20%;
+	font-size: 2vmin;
+	padding: 8px;
+	border-color: #d6d6d6;
+	border-radius: 5px;
+	outline: none;
+    margin-bottom: 30px;
+    font-family: cambria;
+    position: absolute;
+}
+
+/* Checkbox y label */
+.check{
+	width: 50%;
+	height: 30px;
+	margin: auto;
+}
+
+.label-login{
+	font-size: 2.1vmin;
+    color: #ffffff;
+    font-weight: 300;
+	cursor: pointer;
+}
+
+.registro-label{
+	color: #ffffff;
+}
+
+.label{
+    padding: 2px;
+    color: #ffffff;
+}
+
+.perfil{
+	width: 60%;
+	padding: 14px;
+	border-radius: 5px;
+    background: #ffffff;
+    height: 50px;
+    margin-left: 20%;
+    border-style: dotted;
+    border-width: 2px;
+    border-color: #000000;
+}
+
+.tapa-registro{
+    height: 25px;
+    width: 9.6%;
+    background: #ffffff;
+    position: absolute;
+    z-index: 1;
+}
+
+.imagen-carpeta-registro{
+    width: 100%;
+    height: 35px;
+}
+
+.carpeta-registro{
+    width: 4.5%;
+    height: 35px;
+    position: absolute;
+    z-index: 2;
+    margin-left: 11.5%;
+    margin-top: 25px;
+}
+
+/* Botón siguiente */
+.control{
+	text-align: center;
+}
+
+.boton{
+	width: 40%;
+	font-size: 1.2vw;
+	padding: 10px;
+    color: #ffffff;
+	background: #489c95;
+	border-radius: 5px;
+	border-color: #489c95;
+    font-family: cambria;
+    border: none;
+	margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+/* Inicia personalización de checkbox */
+input[type="checkbox"]{
+	appearance: none;
+	-webkit-appearance: none;
+	height: 15px;
+	width: 15px;
+	background-color: #ffffff;
+	border-radius: 3px;
+	cursor: pointer;
+	align-items: center;
+	justify-content: center;
+    padding: 1px;
+}
+
+input[type="checkbox"]:after{
+	font-family: "Font Awesome 5 Free";
+    text-align: center;
+	font-weight: 900;
+	content: "\f00c";
+	font-size: 12px;
+	color: #ffffff;
+}
+
+input[type="checkbox"]:checked{
+	background-color: #489c95;
+
+}
+
+input[type="checkbox"]:checked:after{
+	display: block;
+	outline: none;
+} 
+/* Finaliza personalización de checkbox */
+
+/* Inicia personalización de checkbox en inicio de sesión*/
+input[name="ckactivar"]{
+	appearance: none;
+	-webkit-appearance: none;
+	height: 26px;
+	width: 2.5%;
+	background: #ffffff;
+	border-radius: 3px;
+	cursor: pointer;
+	align-items: center;
+	justify-content: center;
+    padding: 1px;
+    position: absolute;
+    margin-top: 6.5px;
+    margin-left: -3%;
+    text-align: center;
+}
+
+input[name="ckactivar"]:after{
+	font-family: "Font Awesome 5 Free";
+    text-align: center;
+	content: "\f06e";
+	font-size: 1.5vw;
+	color: #525252;
+}
+
+input[name="ckactivar"]:checked{
+	background: #afafaf;
+}
+
+input[name="ckactivar"]:checked:after{
+	display: block;
+	outline: none;
+} 
+/* Finaliza personalización de checkbox en inicio de sesión */
+
+/* ------ FINALIZA REGISTRO E INICIO DE SESIÓN ------*/
+
+/*------ TÉRMINOS Y CONDICIONES ------*/
+.headerterminos{
+    width: 100%;
+    height: 15%;
+    background-color: #cacaca;
+}
+
+.titulo-principal-terminos{
+    font-size: 4vw;
+    color: #489c95;
+    text-align: center;
+}
+
+.conte-titulo{
+    text-align: center;
+	font-weight: bold;
+	font-size: 4vmin;
+	color: #489c95;
+}
+
+.conte-parrafo{
+	font-weight: lighter;
+	font-size: 2.5vmin;
+}
+
+.conte-informacion{
+	left: 50%;
+    padding: 20px;
+    width: 90%;
+	height: 50%;
+    text-align: justify;
+    background-color: #b1c6f1;
+    border-radius: 40px;
+	margin: auto;
+}
+
+.contenedores{
+	display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.conte-licencia{
+    width: 70%;
+	height: 100%;
+	margin-top: 40px;
+	margin-left: 35%;
+    background-color: #b1c6f1;
+    border-radius: 30px;
+    padding: 20px;
+    text-align: justify;
+}
+
+.conte-uso{
+	width: 70%;
+	height: 100%;
+	margin-top: 10px;
+	margin-left: 35%;
+    background-color: #b1c6f1;
+    border-radius: 30px;
+    padding: 20px;
+    text-align: justify;
+}
+
+.conte-propiedad{
+	width: 80%;
+	height: 100%;
+	margin-top: 20px;
+	margin-left: 10%;
+	margin-right: 15%;
+    background-color: #b1c6f1;
+    border-radius: 30px;
+    padding: 20px;
+    text-align: justify;
+}
+
+
+.conte-garantia{
+    left: 50%;
+    padding: 40px;
+    width: 90%;
+	height: 50%;
+    text-align: justify;
+    background-color: #b1c6f1;
+    border-radius: 40px;
+	margin: auto;
+	margin-top: 2%;
+}
+
+.conte-comprobacion{
+	left: 50%;
+    padding: 40px;
+    width: 90%;
+	height: 50%;
+    text-align: justify;
+    background-color: #b1c6f1;
+    border-radius: 40px;
+	margin: auto;
+	margin-top: 2%;
+	margin-left: 5%;
+}
+
+.conte-privacidad{
+    left: 50%;
+    padding: 40px;
+    width: 90%;
+	height: 50%;
+    text-align: justify;
+    background-color: #b1c6f1;
+    border-radius: 40px;
+	margin: auto;
+	margin-top: 2%;
+	margin-left: 5%;
+	margin-right: 5%;
+}
+
+footer{
+    margin-top: 2%;
+    width: 100%;
+    height: 100px;
+    background-color: #cacaca;
+}
+/*------ FINALIZA TÉRMINOS Y CONDICIONES ------*/
+
+/*------ MENÚ PRINCIPAL DE USUARIO AUTENTICADO ------*/
+.body-opciones{
+    width: 100%;
+    height: 90%;
+    background:linear-gradient(#2a4374, #489c95);
+    background-size: cover;
+    background-attachment: fixed;
+    position: relative;
+}
+
+/* Texto */
+.menu-texto{
+    width: 70%;
+    margin-left: 15%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    color: #ffffff;
+}
+.texto-opciones{
+    text-align: center;
+    font-size: 1.5vw;
+}
+
+/* Opciones */
+.opciones{
+    width: 60%;
+    height: 480px;
+    background: #ffffff;
+    border-radius: 50px;
+    margin-left: 20%;
+}
+
+.contenedor-opciones{
+    padding: 30px 0; 
+    width: 90%;
+    margin: auto;
+}
+
+.galeria-opciones{
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+}
+
+.opcion-ind{
+    width: 100%;
+    height:160px;
+    margin-top: 10px;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.opcion-ind > img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: flex;
+    overflow: hidden;
+    box-shadow: 0 0 6px 0 #9dc9cfd7;
+}
+
+.opcion-ind > a{
+    color: #489c95;
+    font-size: 2.5vmin;
+}
+
+/* Menú desplegable */
+.menu-desplegable{
+    width: 11%;
+    height: 220px;
+    float: right;
+}
+
+.menu-desplegable ul li{ 
+    list-style: none;
+}
+
+.nav ul li{
+    list-style: none;
+}
+
+.nav a:hover{
+    background: #e7e7e7;
+}
+
+.nav li a{
+    text-decoration: none;
+    color: #000000;
+    display: block;
+    font-weight: bold;
+    text-align: center;
+    font-size: 2.1vmin;
+}
+
+ul{
+    width: 100%;
+    height: 120px;
+}
+
+.nav li ul{
+    display: none;
+    position: absolute;
+    background: #ffffff;
+}
+
+.nav li:hover > ul{
+    display: block;
+    width: 11%;
+}
+
+.nav li ul a{
+    width: 100%;
+    line-height: 60px;
+}
+
+/* Contenedor perfil */
+.contenedor-perfil{
+    width: 100%; 
+    height: 100px;
+    justify-content: center;
+}
+
+.borrador-perfil{
+    width: 35%;
+    height: 60%;
+    margin: 11% 31%;
+    border-radius: 30px;
+}
+
+.contenedor-nombre{
+    width: 35%;
+    height: 50px;
+    position: absolute;
+    text-align: right;
+    font-size: 1.5vw;
+    line-height: 50px;
+    margin-left: 55%;
+    margin-top: 25px;
+}
+/*------ FINALIZA MENÚ PRINCIPAL DE USUARIO AUTENTICADO ------*/
+
+/*------ ORGANIZAR EVENTO ------*/
+.cuerpo{
+    width: 100%;
+    height: 718px;
+    background:linear-gradient(#2a4374, #489c95);
+}
+
+.conte-formulario-OE1{
+    width: 65%;
+    height: 680px;
+    margin-left: 17.2%;
+    margin-top: 20px;
+    position: absolute;
+    background: #ffffff;
+}
+
+.conte-formulario-OE{
+    width: 90%;
+    height: 620px;
+    margin-left: 5%;
+    margin-top: 30px;
+    position: absolute;
+    background: #ffffff;
+}
+
+.boton-descargarf{
+    position: absolute;
+    margin-left: 38%;
+    width: 24%;
+    height: 35px;
+    font-size: 1.3vw;
+    background: #489c95;
+    border-radius: 5px;
+    margin-top: 24px;
+    text-align: center;
+}
+
+.boton-descargarf a{
+    text-decoration: none;
+    color: #ffffff;
+    display: block;
+    line-height: 33px;
+}
+
+.boton-generar{
+    width: 35%;
+    height: 35px;
+    padding: 6px;
+    border-radius: 5px;
+    background: #ffffff;
+    margin-left: 65%;
+    position: absolute;
+    border-style: dotted;
+    border-color: black;
+    border-width: 1px;
+    margin-top: 24px;
+}
+
+.carpeta-imagen{
+    width: 8.3%;
+    height: 40px;
+    position: absolute;
+    margin-left: 35%;
+    z-index: 2;
+    margin-top: 7px;
+}
+
+input[id="cargarImagen"]{
+	height: 57px;
+	width: 40%;
+	border-radius: 5px;
+    padding: 16px;
+    position: absolute;
+    margin-left: 30%;
+    border-width: 2px;
+    background: #ffffff;
+    border-style: dotted;
+}
+
+.tapa{
+    height: 25px;
+    width: 12%;
+    background: #ffffff;
+    position: absolute;
+    margin-top: 16px;
+    margin-left: 32%;
+    z-index: 2;
+}
+/*------ FINALIZA ORGANIZAR EVENTO ------*/
+
+/*------ MIS EVENTOS ------*/
+.conte-eventoME{
+    width: 90%;
+    height: auto;
+    margin-left: 5%;
+    background-color: #ffffff;
+}
+
+.cuerpo-ME{
+    width: 100%;
+    height: auto;
+    padding-top: 1%;
+    padding-bottom: 1.5%;
+    background:linear-gradient(#2a4374, #489c95);
+}
+
+.conte-imagenesME{
+    width: 30%;
+    height: 309px;
+    margin-left: 60%;
+    position: absolute;
+}
+
+.tablaME{
+    width: 50%;
+    height: auto;
+}
+
+.conte-tabla-imagenesME{
+    width: 90%;
+    height: 330px;
+    background: #ffffff;
+    overflow-y: scroll;
+}
+
+.lineahorizontal-centradaME{
+    width: 90%;
+    height: 3.5px;
+    background-color: #ffffff;
+    margin-left: 5%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.contenedor-tabla-blanco-ME{
+    width: 200%;
+    height: 30px;
+}
+/*controles*/
+.control-ME1{
+    width: 130%;
+    height: 70px;
+    margin-bottom: 1%;
+}
+
+.control-areaME{
+    width: 130%;
+    height: 90px;
+    margin-bottom: 4%;
+}
+
+.control-areaME textarea{
+    width: 93.7%;
+    margin-left: 1.5%;
+    margin-top: 2.5%;
+    resize: none;
+    border-radius: 5px;
+    text-align: justify;
+    border: solid 1px #e9e9e9;
+    background-color: #e9e9e9;
+	padding: 3px;
+    float: left;
+}
+
+
+
+/*label*/
+.label-ME1{
+    font-size: 1.5vw;
+    margin-left: 1%;
+    position: absolute;
+    font-weight: bold;
+}
+
+.label-ME2{
+    font-size: 1.5vw;
+    margin-left: 29.6%;
+    position: absolute;
+    font-weight: bold;
+}
+
+/*textbox*/
+.textbox-ME1{
+	width: 45%;
+	font-size: 1.3vw;
+	padding: 3px;
+    margin-top: 2.7%;
+    margin-left: 1.7%;
+	border-radius: 5px;
+    border: solid 1px #e9e9e9;
+    background-color: #e9e9e9;
+    color: #414141d3;
+    font-family: cambria;
+    outline: none;
+    float: left;
+}
+
+.textbox-ME2{
+	width: 45%;
+	font-size: 1.3vw;
+	padding: 3px;
+    margin-top: 2.7%;
+    margin-left: 4%;
+	border-radius: 5px;
+    border: solid 1px #e9e9e9;
+    background-color: #e9e9e9;
+    color: #414141d3;
+    font-family: cambria;
+    outline: none;
+    float: left;
+}
+
+/*botones*/
+.control-botonesME{
+    width: 150%;
+    height: 65px;
+    padding-top: 6px;
+}
+
+.control-botonesME1{
+    width: 100%;
+    height: 50px;
+    padding-top: 5px;
+}
+
+.boton-ME1{
+    width: 21%;
+    height: 40px;
+    text-decoration: none;
+    background-color: #489c95;
+    margin-left: 3%;
+    margin-top: 7px;
+    color: #ffffff;
+    text-align: center;
+    padding: 8.2px;
+    display: block;
+    font-size: 1.2vw;
+    font-weight: lighter;
+    border-radius: 8px;
+    font-family: cambria;
+    position: absolute;
+}
+
+.boton-ME2{
+    width: 21%;
+    height: 40px;
+    text-decoration: none;
+    background-color: #489c95;
+    margin-left: 25.5%;
+    margin-top: 7px;
+    color: #ffffff;
+    text-align: center;
+    padding: 9px;
+    display: block;
+    font-size: 1.2vw;
+    font-weight: lighter;
+    border-radius: 8px;
+    font-family: cambria;
+    position: absolute;
+}
+
+.boton-ME3{
+    width: 40%;
+    text-decoration: none;
+    background-color: #489c95;
+    margin-left: 3%;
+    color: #ffffff;
+    text-align: center;
+    padding: 9px;
+    display: block;
+    font-size: 1.2vw;
+    font-weight: lighter;
+    border-radius: 8px;
+    font-family: cambria;
+    position: absolute;
+}
+
+.boton-ME4{
+    width: 40%;
+    text-decoration: none;
+    background-color: #489c95;
+    margin-left:45%;
+    color: #ffffff;
+    text-align: center;
+    padding: 9px;
+    display: block;
+    font-size: 1.2vw;
+    font-weight: lighter;
+    border-radius: 8px;
+    font-family: cambria;
+    position: absolute;
+    border: none;
+}
+
+/*boton de graficas*/
+.imagen-grafica{
+    width: 5%;
+    height: auto;
+    margin-left: 50%;
+}
+/*------FINALIZA MIS EVENTOS ------*/
+
+/*------ EVENTOS ACADEMICOS ------*/
+/*boton inscribirse de eventos academicos*/
+.conte-eventoEA{
+    width: 94%;
+    height: 380px;
+    margin-left: 3%;
+    margin-bottom: 20px;
+}
+
+.conte-imagenesEA{
+    width: 30%;
+    height: 309px;
+    margin-left: 64%;
+    margin-top: 10px;
+    position: absolute;
+}
+
+/*controles*/
+.control-EA{
+    width: 150%;
+    height: 60px;
+    margin-bottom: 1.7%;
+}
+
+.control-areaEA{
+    width: 150%;
+    height: 90px;
+    margin-bottom: 4%;
+}
+
+.control-areaEA textarea{
+    width: 93.7%;
+    margin-left: 1.5%;
+    margin-top: 2.5%;
+    resize: none;
+    border-radius: 5px;
+    text-align: justify;
+    border: solid 1px #e9e9e9;
+    background-color: #e9e9e9;
+	padding: 3px;
+    float: left;
+}
+
+/*labels*/
+.label-EA1{
+    font-size: 1.5vw;
+    margin-left: 1%;
+    position: absolute;
+    font-weight: bold;
+}
+
+.label-EA2{
+    font-size: 1.5vw;
+    margin-left: 32%;
+    position: absolute;
+    font-weight: bold;
+}
+
+/*textbox*/
+.textbox-EA1{
+	width: 45%;
+	font-size: 1.3vw;
+	padding: 3px;
+    margin-top: 2.7%;
+    margin-left: 1.3%;
+	border-radius: 5px;
+    border: solid 1px #e9e9e9;
+    background-color: #e9e9e9;
+    color: #414141d3;
+    font-family: cambria;
+    outline: none;
+    float: left;
+}
+
+.textbox-EA2{
+	width: 45%;
+	font-size: 1.3vw;
+	padding: 3px;
+    margin-top: 2.7%;
+    margin-left: 4%;
+	border-radius: 5px;
+    border: solid 1px #e9e9e9;
+    background-color: #e9e9e9;
+    color: #414141d3;
+    font-family: cambria;
+    outline: none;
+    float: left;
+}
+
+.textbox-EAenlace{
+	width: 45%;
+	font-size: 1.3vw;
+	padding: 3px;
+    margin-top: 2.7%;
+    margin-left: 3.5%;
+	border-radius: 5px;
+    text-align: left;
+    color: #2a4374;
+    text-decoration: none;
+    font-family: cambria;
+    outline: none;
+    float: left;
+}
+
+
+/*botones*/
+.control-botonesEA{
+    width: 100%;
+    height: 40px;
+    margin-left: 6%;
+}
+
+
+.boton-EA1{
+    width: 21%;
+    text-decoration: none;
+    background-color: #489c95;
+    margin-left: 6.5%;
+    color: #ffffff;
+    text-align: center;
+    padding: 9px;
+    display: block;
+    font-size: 1.2vw;
+    font-weight: lighter;
+    border-radius: 8px;
+    font-family: cambria;
+    position: absolute;
+}
+
+.boton-EA2{
+    width: 21%;
+    text-decoration: none;
+    background-color: #489c95;
+    margin-left: 29%;
+    color: #ffffff;
+    text-align: center;
+    padding: 9px;
+    display: block;
+    font-size: 1.2vw;
+    font-weight: lighter;
+    border-radius: 8px;
+    font-family: cambria;
+    position: absolute;
+}
+
+.boton-inscribirme-EA{
+    width: 100%;
+    height: 100%;
+    border-style: none;
+    background: #489c95;
+    color: #ffffff;
+    font-size: 1.21vw;
+    border-radius: 8px;
+    font-family: cambria;
+}
+
+.imagen-eventos-EA{
+    width: 18%;
+    height: auto;
+    margin-left: 78%;
+    margin-top:95px;
+}
+
+.tituloEA{
+    color: #489c95;
+    font-size: 1.5vw;
+    font-weight: bolder;
+    text-align: center;
+    margin-top: 40px;
+}
+
+.lineahorizontal-centrada{
+    width: 90%;
+    height: 3px;
+    background-color: #1f1e1e;
+    margin-left: 5%;
+    margin-top: 10px;
+}
+
+.conte-tabla-imagenesEA{
+    width: 100%;
+    height: 300px;
+    background: #ffffff;
+    overflow-y: scroll;
+}
+
+.tablaEA{
+    width: 100%;
+    height: 300px;
+}
+
+.imagen-pdf{
+    width: 16%;
+    height: auto;
+}
+
+.inscribirme-tabla{
+    color: #000000;
+    font-weight: bolder;
+}
+
+.boton-descargarEA{
+    width: 45%;
+    height: 30px;
+    margin-top: 12px;
+    text-decoration: underline;
+    background: #ffffff;
+    position: absolute;
+    margin-left: 25%;
+    font-size: 1vw;
+    text-align: center;
+    padding: 8px;
+    display: block;
+    border-style: none;
+    font-family: cambria;
+    color: #2a4374;
+    font-weight: bold;
+}
+
+.contenedor-tabla-blanco-EA{
+    width: 220%;
+    height: 10px;
+    margin-top: 20px;
+}
+
+.footerEA{
+    height: 80px;
+    background-color: #ffffff;
+}
+
+/*------ FINALIZA EVENTOS ACADEMICOS ------*/
+
+/* Jorge: esto redondea la imagen de perfil*/
+.foto-perfil{
+    width: 40%;
+    height: 70%;
+    margin: 11% 31%;
+    border-radius: 50%;
+    background-size: 100% auto
+}
+
+/* Jorge:esto pone gris el boto de registro si no ha aceptado terminos y condiciones */
+.botonDisable{
+    width: 40%;
+	font-size: 1.2vw;
+	padding: 10px;
+    color: #ffffff;
+	background: #a3aaa9;
+	border-radius: 5px;
+	border-color: #a3aaa9;
+    font-family: cambria;
+    border: none;
+	margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+/*------ INICIAR PERFIL PERSONAL ------*/
+.contenedor-titulo-PP{
+    width: 80%;
+    height: 60px;
+    margin-top: 12px;
+}
+
+.contenedor-logo-PP{
+    width: 10%;
+    height: 10%;
+    margin-top: 5px;
+    margin-left: 20px;
+    position: absolute;
+}
+
+.posicion-imagen-PP{
+    width: 55%;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.posicion-formulario-PP{
+    width: 45%;
+    height: 100vh;
+    text-align: center;
+    background-color: #2a4374;
+}
+
+/*menu desplegable*/
+.menu-desplegable-PP{
+    width: 20%;
+    height: 340px;
+    float: right;
+}
+
+.menu-desplegable-PP ul li{ 
+    list-style: none;
+}
+
+.borrador-perfil-PP{
+    width: 40%;
+    height: 35%;
+    margin-top: 30%;
+}
+
+.nav-PP ul li{
+    list-style: none;
+}
+
+.nav-PP a:hover{
+    background: #ebe9eb;
+}
+
+.nav-PP li a{
+    text-decoration: none;
+    color: black;
+    display: block;
+    font-weight: bold;
+    text-align: center;
+    font-size: 0.9vw;
+}
+
+.ul-PP{
+    width: 100%;
+    height: 240px;
+}
+
+.nav-PP li ul{
+    display: none;
+    background: #ffffff;
+}
+
+.nav-PP li:hover > ul{
+    display: block;
+}
+
+.nav-PP li ul a{
+    width: 100%;
+    line-height: 60px;
+}
+
+/* Contenedor de institución */
+.institucion-PP{
+    width: 100%;
+    height: 280px;
+    color: #ffffff;
+}
+
+/* Imagen de institución */
+.contenedor-imagenPP{
+    width: 20%;
+    height: 80px;
+    margin: auto;
+    margin-top: 23%;
+    
+}
+
+.imagenes-PP{
+    width: 60%;
+    height: auto;
+}
+
+/* Contenido-texto de institución */
+.contenedor-palabraPP{
+    width: 75%;
+    height: 60px;
+    margin: auto;
+    margin-top: 10%;
+    color: #ffffff;
+}
+
+.palabraPP-p{
+    font-size: 2vw;
+    text-align: left;
+    color: #ffffff;
+}
+
+.contenedor-palabraPP hr{
+    background-color: #ffffff;
+}
+
+.institucionPP{
+    width: 100%;
+    margin-top: 15px;
+    padding-top: 7px;
+    height: 40px;
+    border: none;
+    background-color: #489c95;
+    font-size: 1.6vw;
+    color: white;
+    text-align: center;
+}
+
+/* Contenido formación académica*/
+.formacion-PP{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.formacionPP{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.formacion-PP-imagen{
+    width: 13%;
+    height: auto;
+    margin-top: 1%;
+}
+
+.formacion-PP-p{
+    width: 100%;
+    margin-top: 15px;
+    margin-left: 10px;
+    padding-top: 8px;
+    height: 40px;
+    border: none;
+    font-size: 1.6vw;
+    border-bottom: 1px solid;
+    text-align: left;
+}
+
+
+/* Perfil */
+.contenedor-perfil-PP{
+    width: 280px;
+    height: 280px;
+    margin: auto;
+    margin-top: 7%;
+}
+
+.contenedor-nombrePP{
+    height: 30px;
+    border: none;
+    font-size: 1.6vw;
+}
+
+.celdas-perfil-PP{
+    width: 280px;
+    height: 280px;
+    border-radius: 15px;
+    border: solid 1px #2a4374;
+    background-color: rgb(214, 208, 211);
+}
+
+.contenedor-descripcion-PP{
+    width: 60%;
+    height: 200px;
+    margin: auto;
+    margin-top: 5%;
+    border: 2px solid;
+    border-color: #489c95;
+    border-radius: 10px;
+    text-align: justify;
+    font-size: 1.2vw;
+    padding: 10px;
+}
+/*------ FINALIZA PERFIL PERSONAL ------*/
+
+/*------ INICIA INFORMACIÓN DE TALLERES Y CONFERENCIAS ------*/
+.contenedor-titulo-IC{
+    width: 65%;
+    height: 60px;
+    position: absolute;
+    margin-left: 10%;
+    margin-top: 20px;
+}
+
+.titulo-principal-IC{
+    font-size: 3.5vw;
+    color: #2a4374;
+}
+
+.contenedor-nombreEvento-IC{
+    width: 28%;
+    height: 60px;
+    margin-left: 72%;
+    margin-top: 20px;
+    position: absolute;
+    font-size: 1.7vw;
+    text-align: center;
+    padding-top: 15px;
+}
+
+.tituloprogramacionIC{
+    color: #489c95;
+    font-size: 1.5vw;
+    font-weight: bolder;
+    text-align: center;
+    margin-top: 5px;
+}
+
+.lineahorizontal-centradaIC{
+    width: 90%;
+    height: 3px;
+    background-color: #1f1e1e;
+    margin-left: 5%;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.cuerpo-IC{
+    width: 100%;
+    height: auto;
+    padding-top: 1%;
+    padding-bottom: 1.5%;
+    background:linear-gradient(#2a4374, #489c95);
+}
+
+.conte-eventoIC{
+    width: 70%;
+    height: auto;
+    margin-left: 15%;
+    background-color: #ffffff;
+}
+
+.tablaIC{
+    width: 100%;
+    height: auto;
+}
+
+/*controles*/
+.control-IC1{
+    width: 100%;
+    height: 65px;
+    margin-bottom: 1%;
+}
+
+.control-areaIC{
+    width: 100%;
+    height: 65px;
+    margin-bottom: 5%;
+}
+.control-areaIC textarea{
+    width: 92%;
+    margin-left: 3.7%;
+    margin-top: 2.5%;
+    resize: none;
+    border-radius: 5px;
+    text-align: justify;
+    border: solid 1px #e9e9e9;
+    background-color: #e9e9e9;
+	padding: 3px;
+    float: left;
+}
+
+
+.control-botonesIC{
+    width: 100%;
+    height: 60px;
+}
+
+/* Labels */
+.label-IC1{
+    font-size: 1.5vw;
+    margin-left: 2.8%;
+    position: absolute;
+    font-weight: bold;
+}
+
+.label-IC2{
+    font-size: 1.5vw;
+    position: absolute;
+    margin-left: 25.9%;
+    font-weight: bold;
+}
+
+.label-IC3{
+    font-size: 1.5vw;
+    position: absolute;
+    margin-left: 49.4%;
+    font-weight: bold;
+}
+
+.label-IC4{
+    font-size: 1.5vw;
+    margin-left: 37.8%;
+    position: absolute;
+    font-weight: bold;
+}
+
+/* Textboxes */
+.textbox-IC1{
+	width: 25%;
+	font-size: 1.3vw;
+	padding: 3px;
+    margin-top: 2.5%;
+    margin-left: 3.7%;
+	border-radius: 5px;
+    border: solid 1px #e9e9e9;
+    background-color: #e9e9e9;
+    color: #414141d3;
+    font-family: cambria;
+    outline: none;
+    float: left;
+}
+
+
+.textbox-IC2{
+    width: 25%;
+	font-size: 1.3vw;
+	padding: 3px;
+    margin-top: 2.5%;
+    margin-left: 8.1%;
+	border-radius: 5px;
+    border: solid 1px #e9e9e9;
+    background-color: #e9e9e9;
+    color: #414141d3;
+    font-family: cambria;
+    outline: none;
+    float: left;
+}
+
+.textbox-IC3{
+    width: 25%;
+	font-size: 1.3vw;
+	padding: 3px;
+    margin-top: 2.5%;
+    margin-left: 8.8%;
+	border-radius: 5px;
+    border: solid 1px #e9e9e9;
+    background-color: #e9e9e9;
+    color: #414141d3;
+    font-family: cambria;
+    outline: none;
+    float: left;
+}
+
+.textbox-IC4{
+    width: 42%;
+	font-size: 1.3vw;
+	padding: 3px;
+    margin-top: 2.5%;
+    margin-left: 3.7%;
+	border-radius: 5px;
+    border: solid 1px #e9e9e9;
+    background-color: #e9e9e9;
+    color: #414141d3;
+    font-family: cambria;
+    outline: none;
+    float: left;
+}
+
+.textbox-IC5{
+    width: 42%;
+	font-size: 1.3vw;
+	padding: 3px;
+    margin-top: 2.5%;
+    margin-left: 8%;
+	border-radius: 5px;
+    border: solid 1px #e9e9e9;
+    background-color: #e9e9e9;
+    color: #414141d3;
+    font-family: cambria;
+    outline: none;
+    float: left;
+}
+
+.textbox-IC6{
+	width: 92%;
+	font-size: 1.3vw;
+	padding: 3px;
+    margin-top: 2.5%;
+    margin-left: 3.7%;
+	border-radius: 5px;
+    border: solid 1px #e9e9e9;
+    background-color: #e9e9e9;
+    color: #414141d3;
+    font-family: cambria;
+    outline: none;
+    float: left;
+}
+
+.textbox-ICenlace{
+	width: 92%;
+	font-size: 1.3vw;
+	padding: 3px;
+    margin-top: 2.5%;
+    margin-left: 3.7%;
+	border-radius: 5px;
+    border: solid 1px #e9e9e9;
+    background-color: #e9e9e9;
+    color: #414141d3;
+    font-family: cambria;
+    outline: none;
+    text-align: left;
+    font-weight: lighter;
+    float: left;
+    text-decoration: none;
+}
+
+
+
+/* Botones IC */
+.boton-participantesIC{
+    width: 15%;
+    height: 40px;
+    background: #489c95;
+    margin-left: 7.6%;
+    margin-top: 10px;
+    position: absolute;
+    border-radius: 5px;
+    font-size: 1.4vw;
+    font-weight: lighter;
+    text-decoration: none;
+    color: #ffffff;
+    display: block;
+    padding: 5px;
+    text-align: center;
+    border-style: none;
+    font-family: cambria;
+}
+
+.boton-estadisticasIC{
+    width: 15%;
+    height: 40px;
+    background: #489c95;
+    margin-left: 27.6%;
+    margin-top: 10px;
+    position: absolute;
+    border-radius: 5px;
+    font-size: 1.4vw;
+    font-weight: lighter;
+    text-decoration: none;
+    color: #ffffff;
+    display: block;
+    padding: 5px;
+    text-align: center;
+    border-style: none;
+    font-family: cambria;
+}
+
+.boton-eliminarIC{
+    width: 15%;
+    height: 40px;
+    background: #489c95;
+    margin-left: 47.6%;
+    margin-top: 10px;
+    position: absolute;
+    border-radius: 5px;
+    font-size: 1.4vw;
+    font-weight: lighter;
+    text-decoration: none;
+    color: #ffffff;
+    display: block;
+    padding: 5px;
+    text-align: center;
+    border-style: none;
+    font-family: cambria;
+}
+
+.contenedor-tabla-blanco-IC{
+    width: 100%;
+    height: 30px;
+}
+
+/*------ FINALIZA INFORMACIÓN DE TALLERES Y CONFERENCIAS ------*/
+
+/*------ AGREGAR CONFERENCIA O TALLER ------*/
+.cuerpo-AC{
+    width: 100%;
+    height: 880px;
+    background:linear-gradient(#2a4374, #489c95);
+}
+
+.conte-formularioAC1{
+    width: 65%;
+    height: 840px;
+    margin-left: 17.2%;
+    margin-top: 20px;
+    position: absolute;
+    background: #ffffff;
+}
+
+.conte-formularioAC{
+    width: 90%;
+    height: 800px;
+    margin-left: 5%;
+    margin-top: 30px;
+    position: absolute;
+    background: #ffffff;
+}
+
+/* Controles */
+.control1-AC{
+    width: 100%;
+    height: 65px;
+    margin-bottom: 20px;
+}
+
+.control2-AC{
+    width: 100%;
+    height: 110px;
+    margin-bottom: 20px;
+}
+
+/* Labels */
+.label-AC{
+    font-size: 1.5vw;
+    position: absolute;
+    font-weight: bold;
+}
+
+.label-AC2{
+    font-size: 1.5vw;
+    position: absolute;
+    margin-left: 65%;
+    font-weight: bold;
+}
+
+/* Textboxes */
+.textbox-fecha1-AC{
+	width: 35%;
+	font-size: 1.3vw;
+	padding: 4px;
+	border-radius: 5px;
+    border: solid 1px #838383;
+    margin-top: 26px;
+    color: black;
+    font-family: cambria;
+    outline: none;
+    position: absolute;
+}
+
+.textbox-fecha2-AC{
+	width: 35%;
+	font-size: 1.3vw;
+	padding: 4px;
+	border-radius: 5px;
+    border: solid 1px #838383;
+    margin-top: 26px;
+    margin-left: 65%;
+    color: black;
+    font-family: cambria;
+    outline: none;
+    position: absolute;
+}
+
+.textbox-AC{
+	width: 100%;
+	font-size: 1.4vw;
+	padding: 5px;
+	border-radius: 5px;
+    border: solid 1px #838383;
+    margin-top: 26px;
+    color: black;
+    font-family: cambria;
+    outline: none;
+    position: absolute;
+}
+
+.textbox-maximo-AC{
+	width: 35%;
+	font-size: 1.4vw;
+	padding: 4.5px;
+	border-radius: 5px;
+    border: solid 1px #838383;
+    margin-top: 26px;
+    margin-left: 65%;
+    color: black;
+    font-family: cambria;
+    outline: none;
+    position: absolute;
+}
+
+.control2-AC textarea{
+    width: 100%;
+    outline: none;
+    margin-top: 12.5px;
+    resize: none;
+	padding: 5px;
+	border-radius: 5px;
+    border: solid 1px #838383;
+    margin-top: 26px;
+    font-family: cambria;
+    position: absolute;
+}
+
+/* Botón */
+.boton-generar-AC{
+    width: 30%;
+    height: 40px;
+    background: #489c95;
+    margin-left: 35%;
+    margin-top: 10px;
+    position: absolute;
+    border-radius: 5px;
+    font-size: 1.4vw;
+    color: #ffffff;
+    text-align: center;
+    border-style: none;
+    font-family: cambria;
+}
+/*------ FINALIZA AGREGAR CONFERENCIA O TALLER ------*/
+
+/*------ EDITAR PERFIL ------*/
+.cuerpo-EP{
+    width: 100%;
+    height: 1430px;
+    background:linear-gradient(#2a4374, #489c95);
+}
+
+.conte-formulario-EP1{
+    width: 70%;
+    height: 1380px;
+    margin-left: 14.45%;
+    margin-top: 20px;
+    position: absolute;
+    background: #ffffff;
+}
+
+.conte-formulario-EP{
+    width: 90%;
+    height: 1350px;
+    margin-left: 5%;
+    margin-top: 30px;
+    position: absolute;
+    background: #ffffff;
+}
+
+/* Controles */
+.control1-EP{
+    width: 90%;
+    height: 65px;
+    margin-bottom: 5px;  
+    margin-left: 5%;
+}
+
+.control2-EP{
+    width: 90%;
+    height: 105px;
+    margin-bottom: 5px; 
+    margin-left: 5%;
+}
+
+.control3-EP{
+    width: 90%;
+    height: 320px;
+    margin-bottom: 5px; 
+    margin-left: 5%;
+}
+
+.control4-EP{
+    width: 90%;
+    height: 65px;
+    margin-top: 40px;  
+    margin-left: 5%;
+}
+
+/* Labels */
+.label-EP{
+    font-size: 1.5vw;
+    position: absolute;
+    font-weight: bold;
+}
+
+/* Textboxes */
+.textbox-EP{
+    width: 85%;
+	font-size: 1.4vw;
+	padding: 5px;
+	border-radius: 5px;
+    border: solid 1px #838383;
+    margin-top: 26px;
+    color: black;
+    font-family: cambria;
+    outline: none;
+    position: absolute;
+}
+
+.combo-EP{
+    width: 85%;
+    height: 34px;
+	font-size: 1.4vw;
+	padding: 2px;
+	border-radius: 5px;
+    border: solid 1px #838383;
+    margin-top: 26px;
+    color: black;
+    font-family: cambria;
+    outline: none;
+    position: absolute;
+}
+
+.control2-EP textarea{
+    width: 85%;
+    margin-top: 3.3%;
+    resize: none;
+    border-radius: 5px;
+    text-align: justify;
+    border: solid 1px #838383;
+	padding: 3px;
+    float: left;
+    outline: none;
+    position: absolute;
+}
+
+/* Botones */
+.boton-editarEP{
+    width: 3%;
+    height: 30px;
+    margin-left: 95.6%;
+    margin-top: 26px;
+    background: none;
+    outline: none;
+    border-style: none;
+}
+
+.editar-imagenEP{
+    width: 100%;
+    height: 23px;
+}
+
+.contenedor-perfil-EP{
+    width: 280px;
+    height: 280px;
+    position: absolute;
+    margin-left: 28%;
+}
+
+.carpeta-imagenEP{
+    width: 8.3%;
+    height: 40px;
+    position: absolute;
+    margin-left: 32.5%;
+    z-index: 2;
+    margin-top: 7px;
+}
+
+.tapaEP{
+    height: 25px;
+    width: 15%;
+    background: #ffffff;
+    position: absolute;
+    margin-top: 16px;
+    margin-left: 29%;
+    z-index: 2;
+}
+
+input[id="cargarImgPerfil"]{
+	height: 57px;
+	width: 33%;
+	border-radius: 5px;
+    padding: 16px;
+    position: absolute;
+    margin-left: 28%;
+    border-width: 2px;
+    background: #ffffff;
+    border-style: dotted;
+}
+
+.boton-EP1{
+    width: 20%;
+    height: 40px;
+    text-decoration: none;
+    background-color: #489c95;
+    margin-left: 23%;
+    color: #ffffff;
+    text-align: center;
+    padding: 8.2px;
+    display: block;
+    font-size: 1.4vw;
+    font-weight: lighter;
+    border-radius: 8px;
+    font-family: cambria;
+    position: absolute;
+    border-style: none;
+}
+
+.boton-EP2{
+    width: 20%;
+    height: 40px;
+    text-decoration: none;
+    background-color: #489c95;
+    margin-left: 46%;
+    color: #ffffff;
+    text-align: center;
+    padding: 8.2px;
+    display: block;
+    font-size: 1.4vw;
+    font-weight: lighter;
+    border-radius: 8px;
+    font-family: cambria;
+    position: absolute;
+    border-style: none;
+}
+
+/* Jorge: style para el boton de editar */
+.boton-EP1Disable{
+    width: 20%;
+    height: 40px;
+    text-decoration: none;
+    background-color: #7c7c7c;
+    margin-left: 23%;
+    color: #ffffff;
+    text-align: center;
+    padding: 8.2px;
+    display: block;
+    font-size: 1.4vw;
+    font-weight: lighter;
+    border-radius: 8px;
+    font-family: cambria;
+    position: absolute;
+    border-style: none;
+}
+/*------ FINALIZ EDITAR PERFIL ------*/
+
+/*------ INICIA EL DE MIS INSCRIPCIONES ------*/
+.label-MIorg{
+    font-size: 1.5vw;
+    margin-left: 29.4%;
+    position: absolute;
+    font-weight: bold;
+}
+
+.boton-MI{
+    width: 21%;
+    height: 40px;
+    text-decoration: none;
+    background-color: #489c95;
+    margin-left: 29%;
+    color: #ffffff;
+    text-align: center;
+    padding:8px;
+    display: block;
+    font-size: 1.2vw;
+    font-weight: lighter;
+    border-radius: 8px;
+    font-family: cambria;
+    position: absolute;
+    border: none;
+}
+
+.boton-MI1{
+    width: 21%;
+    height: 40px;
+    text-decoration: none;
+    background-color: #489c95;
+    margin-left: 6.5%;
+    color: #ffffff;
+    text-align: center;
+    padding: 8.2px;
+    display: block;
+    font-size: 1.2vw;
+    font-weight: lighter;
+    border-radius: 8px;
+    font-family: cambria;
+    position: absolute;
+}
+/*------ FINALIZA MIS INSCRIPCIONES------*/
+
+/*------ INICIA EL DE HISTORIAL DE EVENTOS------*/
+.cuerpo-historial{
+    width: 100%;
+    height: auto;
+    padding-top: 1%;
+    padding-bottom: 1.5%;
+    background:linear-gradient(#2a4374, #489c95);
+}
+.conte-historial{
+    width: 80%;
+    height: auto;
+    margin-left: 10%;
+    background-color: #ffffff;
+}
+
+.tablahistorial{
+    width: 100%;
+    height: auto;
+}
+.historial-individual{
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+    border-bottom: solid 1px;
+}
+
+.evento-historial{
+    width: 50%;
+    font-size: 1.2vw;
+    font-weight: lighter;
+    padding:  2% 1% 2% 1%;
+}
+
+.organizador-historial{
+    width: 70%;
+    font-size: 1.2vw;
+    font-weight: lighter;
+    padding: 2% 1% 2% 2%;
+}
+
+.fecha-historial{
+    width: 40%;
+    font-size: 1.2vw;
+    font-weight: lighter;
+    padding: 2% 3% 2% 1%; 
+}
+
+.boton-eliminarhistorial{
+    width: 15%;
+    height: 35px;
+    border-radius: 5px;
+    margin-right: 6%;
+    margin-left: 4%;
+    margin-top: 1.5%;
+    padding-top: 0.6%;
+    background-color: #489c95;
+}
+
+.eliminarhistorial{
+    width: 50%;
+    height: 20px;
+    text-decoration: none;
+    font-size: 1.2vw;
+    font-weight: lighter;
+    color: #ffffff;
+    background-color: #489c95;
+    padding: auto;
+}
+/*------ FINALIZA HISTORIAL DE EVENTOS------*/
+
+/*------ INICIA PARTICIPANTES INSCRITOS------*/
+.contenedor-titulo-PI{
+    width: 50%;
+    height: 60px;
+    position: absolute;
+    margin-left: 10%;
+    margin-top: 15px;
+}
+
+.titulo-principal-PI{
+    font-size: 3.8vw;
+    color: #2a4374;  
+}
+
+.contenedor-nombre-PI{
+    width: 28%;
+    height: 100px;
+    margin-left: 72%;
+    position: absolute;
+    font-size: 1.5vw;
+    text-align: center;
+    padding-top: 10px;
+}
+
+.imagen-pdf-PI{
+    width: 12%;
+    height: auto;
+    padding-top: 8px;
+}
+
+.cuerpo-participantes-PI{
+    width: 100%;
+    height: auto;
+    padding-top: 1%;
+    padding-bottom: 1.5%;
+    background:linear-gradient(#2a4374, #489c95);
+}
+.conte-participantes-PI{
+    width: 60%;
+    height: auto;
+    margin-left: 20%;
+    background-color: #ffffff;
+}
+
+.participante-individual{
+    height: 80px;
+    display: flex;
+    border-bottom: solid 1px;
+}
+
+.participante-foto2{
+    width: 9%;
+    height: auto;
+    border-radius: 50px;
+    padding: 0.5%;
+    margin-left: 3%;
+}
+
+.participante-numero{
+    width: 5%;
+    font-size: 1.7vw;
+    color: black;
+    font-weight: lighter;
+    text-decoration: none;
+    margin-top: 2.5%;
+    margin-left: 3%;
+}
+
+.participante-nombre2{
+    width: 50%;
+    font-size: 1.7vw;
+    color: black;
+    font-weight: lighter;
+    text-align: left;
+    text-decoration: none;
+    margin-top: 2.5%;
+    margin-left: 4%;
+}
+
+/*check participacion*/
+.check-inscripcion{
+	width: 19%;
+	height: 60px;
+    padding-top: 27px;
+    float: left;
+    margin-left: 3%;
+}
+
+.label-inscripcion{
+    padding: 2px;
+    font-size: 1.2vw;
+}
+
+/*participantes inscritos*/
+.participante-foto{
+    width: 9%;
+    height: auto;
+    border-radius: 50px;
+    padding: 0.5%;
+    margin-left: 7.5%;
+}
+
+.participante-nombre{
+    font-size: 2vw;
+    color: black;
+    font-weight: lighter;
+    text-decoration: none;
+    margin-top: 2%;
+    margin-left: 7.5%;
+}
+/*------ FINALIZA PARTICIPANTES INSCRITOS------*/
+
+/*------ INICIA EL DE ESTADISTICAS------*/
+.Boton-generarE{
+    width: 13%;
+    text-decoration: none;
+    background-color: #489c95;
+    margin-left: 83%;
+    margin-top: 2%;
+    color: #ffffff;
+    text-align: center;
+    padding: 9px;
+    display: block;
+    font-size: 1.3vw;
+    font-weight: lighter;
+    border-radius: 8px;
+    font-family: cambria;
+    position: absolute;
+}
+ /*posicion*/
+.posicion-E{
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+}
+
+.posicion-infoE{
+    width: 35%;
+    height: 86.6vh;
+    background-color: #2a4374;
+    text-align: center;
+}
+
+.posicion-grafE{
+    width: 65%;
+    height: 86.6vh;
+    background-color: #eeeeee;
+    text-align: center;
+}
+
+/*posicion info*/
+.imagen1-E{
+    width: 60%;
+    height: auto;
+}
+
+.text1-E{
+    font-size: 1.35vw;
+    width: 60%;
+    margin-left: 20%;
+    color: #ffffff;
+}
+
+/*posicion grafica*/
+.text2-E{
+    font-size: 1.8vw;
+    width: 60%;
+    margin-left: 20%;
+    margin-top: 1.5%;
+}
+
+.linea-E{
+    width: 86%;
+    height: 1.5px;
+    background-color: #000000;
+    margin-left: 7%;
+    margin-top: 7px;
+}
+
+/*tabla*/
+.tablaEst{
+    width: 66%;
+    height: auto;
+    margin: auto;
+    margin-top: 2%;
+}
+
+.celdasEst{
+	padding: 1.5%;
+	font-size: 1.4vw;
+    color: #489c95;
+    background-color: #ffffff;
+}
+
+.contenido-Estadisticas{
+    padding: 1.5%;
+	font-size: 1.3vw;
+    color: #000000;
+    text-decoration: none;
+    text-align: center;
+    background-color: #ffffff;
+}
+
+/*graficas*/
+:root{
+    --color_nopresentes: #489c95;
+    --color_presentes: #2a4374;
+    --background-color: #0000;
+}
+
+.container_grafico{
+    width: 600px;
+    height: 395px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/*participantes*/
+.container-participantes{
+    width: 42%;
+    height: auto;
+    margin-left: 10px;
+}
+
+.participantes{
+    margin-left: 10px;
+    font-size: 1.05vw;
+    width: 100%;
+    text-align: left;
+}
+
+.participantes_all{
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+[class^="color_"]{
+    width: 15px;
+    height: 15px;
+    background-color: var(--color_presentes);
+    border-radius: 3px;
+}
+
+.color_nopresentes{
+    background-color: var(--color_nopresentes);
+}
+
+.totalparticipantes{
+    padding: 10px;
+    font-weight: bold;
+    font-size: 1.2vw;
+    border-radius: 3px;
+}
+/*------ FINALIZA EL DE ESTADISTICAS------*/
+
+/*------ INICIA GENERACION DE DIPLOMAS------*/
+.contenedor-titulo-diploma{
+    width: 45%;
+    height: 50px;
+    position: absolute;
+    margin-left: 10%;
+    margin-top: 12px;
+}
+
+.contenedor-GD{
+    width: 100%;
+    height: auto;
+    background: #dddddd;
+}
+
+.conte-diploma{
+    width: 100%;
+    height: 506px;
+    background: #ffffff;
+}
+
+.conte-tabla-diploma{
+    width: 53%;
+    height: 506px;
+    background: #a1a1a1;
+    margin: auto;
+    overflow-y: scroll;
+}
+
+.tabla-diplomas{
+    width: 100%;
+    height: 100%;
+}
+
+.conte-dentrotabla{
+    width: 100%;
+    height: 90px;
+    background: #489c95;
+}
+
+/* Diseño del diploma */
+
+.barra-superior{
+    width: 100%;
+    height: 30px;
+    background: #2a4374
+}
+
+.barra-ovalo{
+    width: 100%;
+    height: 100px;
+    background: #ffffff;
+    border-radius: 300px/50px;
+    margin-top: 10px;
+}
+
+.logo-GD{
+    width: 70px;
+    height: 70px;
+}
+
+.barra-inferior{
+    width: 100%;
+    height: 16.5px;
+    background: #489c95;
+}
+
+.barra-inferior2{
+    width: 100%;
+    height: 25px;
+    background: #2a4374
+}
+/* Fin de diseño de diploma*/
+
+.cien-GD{
+    width: 100%;
+    height: 100%;
+    background: #ffffff;
+}
+
+.conte-palabradiploma{
+    width: 30%;
+    height: 45px;
+    margin: auto;
+    margin-top: 45px;
+}
+
+.contenido-GD{
+    width: 70%;
+    height: 30px;
+    margin: auto;
+    background: #ffffff;
+    margin-top: 10px;
+}
+
+.contenido1-GD{
+    width: 80%;
+    height: 30px;
+    margin: auto;
+    background: #ffffff;
+    margin-top: 17px;
+}
+
+.textbox-GD{
+    width: 90%;
+    height: 30px;
+    border:none;
+    text-align: center;
+    font-family: cambria;
+    font-size: 1.3vw;
+    border-bottom: 1px solid #000000;
+    outline: none;
+    float: left;
+    margin-left: 1%;
+}
+
+.textbox1-GD{
+    width: 90%;
+    height: 30px;
+    border:none;
+    text-align: center;
+    font-family: cambria;
+    font-size: 1.3vw;
+    border-bottom: 1px solid #000000;
+    outline: none;
+    margin-top: 3px;
+}
+
+.textbox2-GD{
+    width: 24%;
+    height: 30px;
+    border:none;
+    text-align: center;
+    font-family: cambria;
+    font-size: 1.3vw;
+    border-bottom: 1px solid #000000;
+    outline: none;
+    float: left;
+    margin-left: 1%;
+}
+
+.conte-imagen-firma{
+    width: 100%;
+    height: 62px;
+    border-bottom: 1px solid #000000;
+    background: #ffffff;
+    margin: auto;
+}
+
+.contenido2-GD{
+    width: 70%;
+    height: 55px;
+    margin: auto;
+    background: #ffffff;
+    margin-top: 20px;
+}
+
+.tabla-firmas{
+    margin: auto;
+    margin-top: 10px;
+}
+
+.conte-tablafirmas{
+    width: 96%;
+    height: 110px;
+    margin: auto;
+}
+
+/*contenedor de firmas*/
+.contenedor-firma{
+    background-color: #cecece;
+    height: 190px;
+    display: flex;
+}
+
+.contenedor-firma-datos{
+    width: 40%;
+    height: 120px;
+    text-align: left;
+    background: #ffffff;
+    border-radius: 5px;
+    border: solid 1px #000000;
+    margin-top: 10px;
+    margin-left: 9%;
+}
+
+.contenedor-firma-agregar{
+    width: 40%;
+    height: 120px;
+    background: #ffffff;
+    border: solid 1px #000000;
+    margin-top: 10px;
+    border-radius: 5px;
+    margin-left: 2%;
+}
+
+.texto2-diploma{
+    font-size: 1.3vw;
+    margin-top: 10px;
+    margin-left: 15px;
+}
+
+/*botones*/
+.boton-diploma-participantes{
+    width: 14%;
+    text-decoration: none;
+    background-color: #489c95;
+    margin-left: 15px;
+    margin-top: 10px;
+    color: #ffffff;
+    text-align: center;
+    padding: 7px;
+    display: block;
+    font-size: 1vw;
+    font-weight: lighter;
+    border-radius: 8px;
+    font-family: cambria;
+    position: absolute;
+}
+
+.boton-diploma-agregar{
+    width: 12%;
+    text-decoration: none;
+    background-color: #489c95;
+    margin-left: 27%;
+    margin-top: -28px;
+    margin-bottom: 5px;
+    color: #ffffff;
+    text-align: center;
+    padding: 7px;
+    display: block;
+    font-size: 1vw;
+    font-weight: lighter;
+    border-radius: 5px;
+    font-family: cambria;
+    position: absolute;
+    border: none;
+}
+
+.boton-diploma-eliminar{
+    width: 12%;
+    text-decoration: none;
+    background-color: #489c95;
+    margin-left: 27%;
+    margin-top: 6px;
+    margin-bottom: 5px;
+    color: #ffffff;
+    text-align: center;
+    padding: 7px;
+    display: block;
+    font-size: 1vw;
+    font-weight: lighter;
+    border-radius: 5px;
+    font-family: cambria;
+    position: absolute;
+    border: none;
+}
+
+.diploma-nombre{
+    margin-top: 5px;
+    width: 65%;
+}
+
+/*textbox diploma*/
+.textbox-diploma{
+    width: 98%;
+    height: 30px;
+    padding: 3px;
+    color: #313131;
+    background: #e7e6e6;
+    font-size: 1.1vw;
+    font-family: cambria;
+    border-radius: 5px;
+    border: solid #868686 1px;
+    outline: none;
+    margin-left: 3%;
+}
+
+.textbox-firma{
+    width: 85%;
+    height: 60px;
+    border:none;
+    text-align: center;
+    font-family: cambria;
+    font-size: 1.4vw;
+    border-bottom: 1px solid #000000;
+    outline: none;
+}
+/*boton de confirmar y cancelar firma*/
+.diploma-botones{
+    display: flex;
+}
+
+.boton-diploma-confirmar{
+    width: 5.8%;
+    text-decoration: none;
+    background: #489c95;
+    margin-left: 27%;
+    margin-top: -2%;
+    color: #ffffff;
+    text-align: center;
+    padding: 7px;
+    display: block;
+    font-size: 1.01vw;
+    font-weight: lighter;
+    border-radius: 5px;
+    font-family: cambria;
+    position: absolute;
+    border: none;
+}
+
+.boton-diploma-cancelar{
+    width: 5.8%;
+    text-decoration: none;
+    background: #489c95;
+    margin-left: 33.2%;
+    margin-top: -2%;
+    color: #ffffff;
+    text-align: center;
+    padding: 7px;
+    display: block;
+    font-size: 1.01vw;
+    font-weight: lighter;
+    border-radius: 5px;
+    font-family: cambria;
+    position: absolute;
+    border: none;
+}
+
+.botonDisableconfirmar{
+    width: 5.8%;
+    text-decoration: none;
+    background: #a3aaa9;
+    margin-left: 27%;
+    margin-top: -2%;
+    color: #ffffff;
+    text-align: center;
+    padding: 7px;
+    display: block;
+    font-size: 1vw;
+    font-weight: lighter;
+    border-radius: 5px;
+    font-family: cambria;
+    position: absolute;
+    border: none;
+}
+
+.botonDisablecancelar{
+    width: 5.8%;
+    text-decoration: none;
+    background: #a3aaa9;
+    margin-left: 33.2%;
+    margin-top: -2%;
+    color: #ffffff;
+    text-align: center;
+    padding: 7px;
+    display: block;
+    font-size: 1.01vw;
+    font-weight: lighter;
+    border-radius: 5px;
+    font-family: cambria;
+    position: absolute;
+    border: none;
+}
+
+.label-diploma{
+    font-size: 1.2vw;
+    padding: 8px;
+}
+
+/*boton generar diploma*/
+.boton-diploma-generar{
+    width: 15%;
+    text-decoration: none;
+    background-color: #489c95;
+    margin-left: 42.5%;
+    margin-top: 140px;
+    margin-bottom: 5px;
+    color: #ffffff;
+    text-align: center;
+    padding: 7px;
+    display: block;
+    font-size: 1.2vw;
+    font-weight: lighter;
+    border-radius: 8px;
+    font-family: cambria;
+    position: absolute;
+}
+/*------ FINALIZA GENERACIÓN DE DIPLOMAS------*/
+
+/*------ INICIA ESTADISTICAS DE EVENTOS------*/
+/*titulo*/
+.contenedor-titulo-EE{
+    width: 50%;
+    height: 60px;
+    position: absolute;
+    margin-left: 10%;
+    margin-top: 12px;
+}
+
+ /*posicion*/
+ .posicion-EE{
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+}
+
+.posicion-infoEE{
+    width: 30%;
+    height: 180vh;
+    background-color: #2a4374;
+    text-align: center;
+}
+
+.posicion-grafEE{
+    width: 70%;
+    height: auto;
+    background-color: #eeeeee;
+    text-align: center;
+}
+
+/*textos*/
+.text1-EE{
+    font-size: 1.35vw;
+    width: 100%;
+    margin-top: 7%;
+    color: #ffffff;
+}
+
+.text2-EE{
+    font-size: 1.25vw;
+    width: 100%;
+    text-align: left;
+    margin-top: 5%;
+    margin-left: 8%;
+    text-decoration: underline;
+    color: #ffffff;
+}
+
+.text3-EE{
+    font-size: 1.25vw;
+    text-align: left;
+    margin-left: 8%;
+    color: #ffffff;
+    padding: 6px;
+}
+
+.text4-EE{
+    font-size: 1.8vw;
+    width: 70%;
+    margin-left: 15%;
+    margin-top: 1.5%;
+}
+
+/*imagen*/
+.imagen1-EE{
+    width: 80%;
+    height: auto;
+    margin-top: 2%;
+}
+
+/*tabla*/
+.contenedor-tabla-EE{
+    width: 30%;
+    height: auto;
+    position: absolute;
+}
+
+.tabla-EE{
+    width: 100%;
+    height: auto;
+    background-color: #2a4374;
+}
+
+.contenedor-blanco-EE{
+    height: 200px;
+}
+/*------ FINALIZA ESTADISTICAS DE EVENTOS------*/

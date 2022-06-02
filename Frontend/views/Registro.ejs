@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Registrarse</title>
+    <!--Enlaces del frontend-->
+    <link rel="shortcut icon" href="/static/img/logo.png" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">    
+    <!--aqui termina enlaces del frontend-->
+</head>
+
+<body>
+
+    <section class="posicion">
+
+            <div class="posicion-imagen">
+                <div class="volver">
+                    <!--Enlaces del frontend-->
+                    <a href="/" title="Volver"><img src="/static/img/atras.png" class="boton-atras"></a>
+                    <!--termina enlaces del frontend-->
+                </div>
+                <!--Enlaces del frontend-->
+                <img src="/static/img/registers.png">
+                <!--termina enlaces del frontend-->
+            </div>
+
+            <div class="posicion-formulario" >
+                
+                <div>
+                    <p class="titulo">Registrarse</p>
+                </div>
+            <!-- Jorge: El Action registrar activa el metodo post al precionar el input submit-->
+            <form name="frmregister" id="formulario" action="/Registro" method="post" enctype="multipart/form-data" autocomplete="off">
+                    <div>
+                        <input type="text" id="txtuser" placeholder="Usuario" name="usuario" class="textbox" required>
+                    </div>
+
+                    <div>
+                        <input type="email" id="txtcorreo" placeholder="Correo electrónico" name="correo" class="textbox" required>
+                    </div>
+        
+                    <div>
+                        <input type="text" id="txtinstituto" placeholder="Institución" name="instituto" class="textbox" required>
+                    </div>
+        
+                    <div>
+                        <select id="txtformacion" name="formacion" class="textbox" required>
+                            <option value="" disabled selected>Formación Académica</option>
+                            <option value="Educación Primaria">Educación Primaria</option>
+                            <option value="Educación Secundaria">Educación Secundaria</option>
+                            <option value="Educación Superior">Educación Superior</option>
+                            <option value="Máster/Doctorado">Máster/Doctorado</option>
+                        </select>
+                    </div>
+        
+                    <div>
+                        <input type="text" id="txtdescripcion" placeholder="Títulos, Descripción o Intereses" name="descripcion" class="textbox" required>
+                    </div>
+                    
+                    <div>
+                        <input type="password" id="txtpass" placeholder="Contraseña" name="pass" class="textbox" required>
+                        <input type="checkbox" onclick="myFunction()" value="Show Password" id="activar2" title="Ver contraseña" name="ckactivar">
+                    </div>
+
+                    <div class="carpeta-registro"><label for="cargarPerfil"><img src="/static/img/carpeta.png" class="imagen-carpeta-registro"></label></div>
+                    <p class="registro-label">Seleccione su foto de pérfil</p>
+  
+                    <div class="perfil" >  
+                        <div class="tapa-registro"></div>
+                        <input type="file" accept="image/*" alt="Submit" id="cargarPerfil" name="avatar" required>
+                    </div>
+
+                    <br>
+                    <div class="check">
+                        <input type="checkbox"  name="terminos" value="Acepto los términos y condiciones" id="activar" onclick="javacript:EnableDisableButton();">
+                        <label class="label" for="activar">Acepto los 
+                            <a href="/Terminos" class="registro-label" target="_blank">términos y condiciones</a>
+                        </label>
+                    </div>
+        
+                    <div class="control"></div>
+                    <!--Jorge Se cambio este boton por input de tipo submit para activar el metodo post-->
+                    <input type="submit" id="btnregister" name="register" class="botonDisable" value="Siguiente" title="Acepte terminos y condiciones para continuar" disabled="" > 
+                    </div>
+                </form>
+            </div>
+    </section>    
+
+    <!-- Sweet alert traida desde app.js-->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <% if(typeof alert !="undefined"){ %>
+        <script>
+            Swal.fire({
+                title: '<%= alertTitle %>',
+                text: '<%= alertMessage%>',
+                icon: '<%= alertIcon %>',
+                showConfirmButton: '<%=showConfirmButton%>',
+                timer: '<%= timer %>',
+            }).then(()=>{
+                window.location='/<%=ruta%>'
+
+            })
+        </script>
+    <% } %>
+    
+    <script>
+        function myFunction() {
+            var x = document.getElementById("txtpass");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+            }
+        } 
+        
+    </script>
+
+    <!--Jorge Funcion que habilita y deshabilita el botton de registro segun el check activado o no-->
+     <script>
+        function EnableDisableButton(){
+            let button= document.getElementById('btnregister')
+            if (document.getElementById('activar').checked ){
+                button.disabled =false;
+                button.className="boton";
+                button.title= "Haga click para continuar"
+            } else {
+                button.disabled =true;
+                button.className="botonDisable";
+                button.title= "Acepte terminos y condiciones para continuar"
+            }
+        }
+    </script>
+</body>
+</html>

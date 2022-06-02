@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Perfil público</title>
+    <!--Enlaces del frontend-->
+    <link rel="shortcut icon" href="/static/img/logo.png" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">    
+    <!--aqui termina enlaces del frontend-->
+</head>
+
+<body>
+    
+    <section class="posicion">
+
+            <div class="posicion-imagen-PP">
+                <div class="contenedor-logo-PP">
+                    <!--Enlace frontend-->
+                    <a href="/EventosAcademicos" title="Volver"><img src="/static/img/atras.png" class="logo"></a>
+                    <!--termina enlace frontend-->
+                </div>
+                <div class="contenedor-titulo-PP">
+                    <p class="titulo-principal">Perfil público</p>
+                </div>
+                <div class="contenedor-perfil-PP">
+                    <table class="tabla-perfil-PP" id="lista-eventos">		
+                    <!--Aqui se debe traer la imagen de perfil desde la base-->
+                        <tbody>
+                            <tr>
+                                <th><img src="/files/<%= Fotografia%>" alt="" class="celdas-perfil-PP"></th>
+                            </tr>
+                        </tbody>
+                    <!--termina el de traer la imagen de perfil desde la base-->
+                    </table>
+                </div>
+                <!--Aqui se debe traer el nombre de usuario desde la base-->
+                <div class="contenedor-nombrePP">
+                    <p><%=Nombre%></p>
+                </div>
+                <!--Termina el de traer el nombre de usuario desde la base-->
+                <div>
+                    <fieldset  class="contenedor-descripcion-PP">
+                        <legend>Título, descripción e intereses</legend>
+                        <p><%= Descripcion%></p>
+                    </fieldset>
+                </div>
+            </div>
+
+            <div class="posicion-formulario-PP" >               
+
+                <div class="institucion-PP">
+                    <div class="contenedor-imagenPP">
+                        <!--enlace del frontend-->
+                        <img src="/static/img/universidad.png" class="imagenes-PP">
+                        <!--termina enlace del frontend-->
+                    </div>
+                    <div class="contenedor-palabraPP">
+                        <p class="palabraPP-p">Institución</p>
+                        <hr>
+                        <div class="institucionPP">
+                        <!--aqui se debe traer la institucion desde la base-->
+                            <p><%=Institucion%></p>
+                        <!--termina el de traer la institucion desde la base-->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contenedor-palabraPP">
+                    <p class="palabraPP-p">Formación académica</p>
+                    <hr>
+                    <div class="formacion-PP">
+                        <img class="formacion-PP-imagen" src="/static/img/birrete.png">
+                    <!--aqui se debe traer formacion academica desde la base--> 
+                        <p class="formacion-PP-p"><%= Formacion %></p>
+                    <!--termina el de traer formacion academica desde la base-->
+                    </div>
+                </div>
+            </div>
+    </section>    
+</body>
+</html>

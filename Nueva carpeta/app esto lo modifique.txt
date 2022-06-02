@@ -1,0 +1,129 @@
+//Jorge: Registro de Usuario Respuesta al llamado del metodo post se llama al middleware upload para subir la imagen
+app.post('/Registro',upload.single('avatar'),async(req,res)=>{
+///Se capturan los datos del formulario
+    const usuario = req.body.usuario;
+    const correo = req.body.correo;
+    const institucion = req.body.instituto;
+    const formacion = req.body.formacion;
+    const descripcion = req.body.descripcion;
+    const pass = req.body.pass;
+    let passwordHash = await bcryptjs.hash(pass, 8);
+    /// Se recibe el nombre del archivo subido
+    const foto =req.file.filename;
+    ///Consultamos si el correo ya existe 
+    conexion.query('SELECT * FROM Registro_Usuario WHERE Email_Usuario = ?',[correo], async (error,results)=>{
+        ///Si es igual a 0 no existe    
+        if(results.length == 0){
+            //// Insertaos en la tabla
+                conexion.query('INSERT INTO registro_usuario SET ?',{Nombre_Usuario:usuario,Email_Usuario:correo,
+                    Institucion_Academica:institucion,Formacion:formacion,Descripcion_Usuario:descripcion,
+                    Password_Usuario:passwordHash,Fotografia_Usuario:foto,
+                    ///Verificamos si hay error en al ingresar
+                    }, async(error,result)=>{
+                        if(error){
+                            res.send('Error al ingresar');
+                        }else{
+                            conexion.query('SELECT * FROM Registro_Usuario WHERE Email_Usuario = ?',[correo], async (error,results)=>{
+                                if(results.length == 0 || !(await bcryptjs.compare(pass,results[0].Password_Usuario))){
+                                    res.render('IniciarSesion',{
+                                        alert:true,
+                                        alertTitle:"Error",
+                                        alertMessage:"Usuario y/o contraseña incorrecta, intente de nuevo",
+                                        alertIcon:'error',
+                                        showConfirmButton:true,
+                                        timer:2000,
+                                        ruta:'Login'
+                                });
+                            }else{
+                                ///Creamos las variables de inicio de session 
+                                req.session.loggedin= true;
+                                req.session.name = results[0].Nombre_Usuario;
+                                req.session.id= results[0].ID_Usuario;
+                                req.session.fotoUser= results[0].Fotografia_Usuario;
+                                req.session.email=results[0].Email_Usuario;
+                                req.session.instituto= results[0].Institucion_Academica;
+                                req.session.formacion= results[0].Formacion;
+                                req.session.descripcion= results[0].Descripcion_Usuario;
+                                req.session.pass= pass;
+                                res.render('Registro',{
+                                    alert:true,
+                                    alertTitle:"Inicio de sesión exitoso",
+                                    alertMessage:"¡Bienvenido a Academic Events!",
+                                    alertIcon:'success',
+                                    showConfirmButton:true,
+                                    timer: 1500,
+                                    ruta:'Menu'
+                                });
+                            }
+                        })
+                    }
+                });
+        }else{
+        ///Si ya existe te redirije al login 
+        console.log('./Backend/database/uploads/'+foto)
+        fs.unlink('./Backend/database/uploads/'+foto,function(err){
+            if(err) return console.log(err);
+            console.log('file deleted successfully');
+            });  
+                res.render('Registro',{
+                    alert: true,
+                    alertTitle:"Registro",
+                    alertMessage:"El correo ya está registrado",
+                    alertIcon:'warning',
+                    showConfirmButton: false,
+                    timer: 2000,
+                    ruta:'Login'
+                });
+            }
+        });
+});
+
+
+
+
+
+///Metodo de login 
+app.post('/auth',async(req,res)=>{
+    // traemos las variables del formulario
+    const correo = req.body.correo;
+    const pass= req.body.pass;
+    let passwordHash = await bcryptjs.hash(pass,8);
+    /// verificamos si las credenciales estan ingresadas en los textbox
+    if(correo && pass){
+        ///verificamos si el Registro existe o la contraseña es incorrecta
+        conexion.query('SELECT * FROM Registro_Usuario WHERE Email_Usuario = ?',[correo], async (error,results)=>{
+            if(results.length == 0 || !(await bcryptjs.compare(pass,results[0].Password_Usuario))){
+                res.render('IniciarSesion',{
+                    alert:true,
+                    alertTitle:"Error",
+                    alertMessage:"Usuario y/o contraseña incorrecta, intente de nuevo",
+                    alertIcon:'error',
+                    showConfirmButton:true,
+                    timer:2000,
+                    ruta:'Login'
+            });
+        }else{
+            ///Creamos las variables de inicio de session 
+            req.session.loggedin= true;
+            req.session.name = results[0].Nombre_Usuario;
+            req.session.id= results[0].ID_Usuario;
+            req.session.fotoUser= results[0].Fotografia_Usuario;
+            req.session.email=results[0].Email_Usuario;
+            req.session.instituto= results[0].Institucion_Academica;
+            req.session.formacion= results[0].Formacion;
+            req.session.descripcion= results[0].Descripcion_Usuario;
+            req.session.pass=pass;
+            res.render('IniciarSesion',{
+                alert:true,
+                alertTitle:"Inicio de sesión exitoso",
+                alertMessage:"¡Bienvenido a Academic Events!",
+                alertIcon:'success',
+                showConfirmButton:false,
+                timer: 1500,
+                ruta:'Menu'
+                });
+            }
+        })
+    }
+    
+})

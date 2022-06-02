@@ -1,0 +1,58 @@
+///Jorge Menu Perfil publico 
+app.get('/PerfilPersonal',(req,res)=>{
+    if(req.session.loggedin){
+        //si la variable es verdadera ingresa a la pagina
+        res.render('PerfilPersonal',{
+            //lleva consigo las variables de autenticacion user, id y foto tomados de la base de datos
+            login: true,
+            User: req.session.name,
+            ID: req.session.id, 
+            fotoUser: req.session.fotoUser,
+            Instituto: req.session.instituto,
+            Formacion: req.session.formacion,
+            Descripcion:req.session.descripcion
+        });
+    }else{
+        conexion.query("SELECT * FROM eventos INNER JOIN estado_evento on eventos.ID_Estado = estado_evento.ID_Estado WHERE eventos.ID_Estado < 4 AND eventos.ID_Tipo < 2", (error, result)=>{
+            if(error){
+                throw error
+            }else{
+                //enviamos el resultado de la consulta y lo almacenamos en una variable del mismo nombre
+                res.render('principal', {r:result,
+                login: false
+                });
+            }
+        });
+    }
+});
+
+///Jorge: Editar Perfil 
+app.get('/EditarPerfil',(req,res)=>{
+    if(req.session.loggedin){
+        //si la variable es verdadera ingresa a la pagina
+        res.render('EditarPerfil',{
+            //lleva consigo las variables de autenticacion user, id y foto tomados de la base de datos
+            login: true,
+            User: req.session.name,
+            ID: req.session.id, 
+            fotoUser: req.session.fotoUser,
+            Instituto: req.session.instituto,
+            Formacion: req.session.formacion,
+            Descripcion:req.session.descripcion,
+            Email:req.session.email,
+            Password: req.session.pass,
+        });
+    }else{
+        conexion.query("SELECT * FROM eventos INNER JOIN estado_evento on eventos.ID_Estado = estado_evento.ID_Estado WHERE eventos.ID_Estado < 4 AND eventos.ID_Tipo < 2", (error, result)=>{
+            if(error){
+                throw error
+            }else{
+                //enviamos el resultado de la consulta y lo almacenamos en una variable del mismo nombre
+                res.render('principal', {r:result,
+                login: false
+                });
+            }
+        });
+    }
+});
+

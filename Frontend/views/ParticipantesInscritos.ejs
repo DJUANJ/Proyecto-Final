@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--enlaces del frontend-->
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="/static/img/logo.png" type="image/x-icon">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <!--terminan enlaces del frontend-->
+    <title>Participantes inscritos</title>
+</head>
+<body>
+    <header>
+        <div class="contenedor-logo">
+            <!--Enlace frontend-->
+            <a href="/MisEventos" title="Volver"><img src="/static/img/atras.png" class="logo"></a>
+            <!--termina enlace frontend-->
+        </div>
+        <div class="contenedor-titulo-PI">
+            <p class="titulo-principal-PI">Lista de participantes inscritos</p>
+        </div>
+        <div class="contenedor-nombre-PI">
+            <!--Aqui se debe traer el nombre del evento-->
+            <p>Evento: <%= Evento %></p>
+            <!--Aqui se debe traer el nombre del evento-->
+            <a href="/DescargaListaEvento/<%=ID_Evento%>/<%= Evento %>" target="_blank"><img class="imagen-pdf-PI" src="/static/img/pdf.png" title="Descargar PDF" alt="Decargar PDF"/></a>
+        </div>
+    </header>
+
+    <div class="cuerpo-participantes-PI">
+        <div class="conte-participantes-PI">
+            <table class="tablahistorial" id="lista-historial">	
+                <thead>
+                    <tr>
+                        <th>
+                            
+                        </th>       
+                    </tr>
+                </thead>
+
+                <tbody id="contenido-historial">
+                    <% r.forEach((Participante)=> { %>
+                        <tr>
+                            <th>
+                                <div class="participante-individual">
+                                    <div class="participante-nombre"> 
+                                        <!--Aqui se debe traer el numero-->
+                                        <p><%= contador=contador+1  %> </p>
+                                        <!--Aqui se debe traer el numero-->
+                                    </div>
+                                    <!--imagen frontend-->
+                                    <img class="participante-foto" src="/files/<%= Participante.Fotografia_Usuario %>" title="Perfil" alt="Perfil">
+                                    <!--imagen frontend-->
+                                    <div class="participante-nombre"> 
+                                        <!--Aqui se debe traer el nombre-->
+                                        <p><%= Participante.Nombre_Usuario %></p>
+                                        <!--Aqui se debe traer el nombre-->
+                                    </div>
+                                </div>
+                            </th>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

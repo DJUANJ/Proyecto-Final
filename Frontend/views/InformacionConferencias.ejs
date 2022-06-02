@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--enlaces del frontend-->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/static/img/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <!--terminan enlaces del frontend-->
+    <title>Información de conferencias y talleres</title>
+</head>
+<body>
+    <header>
+        <div class="contenedor-logo">
+            <!--Enlace frontend-->
+            <a href="/MisEventos" title="Volver"><img src="/static/img/atras.png" class="logo"></a>
+            <!--termina enlace frontend-->
+        </div>
+        <div class="contenedor-titulo-IC">
+            <p class="titulo-principal-IC">Información de conferencias y talleres</p>
+        </div>
+        <div class="contenedor-nombreEvento-IC">
+            <!--Aqui se debe traer el nombre del evento-->
+            <p>Evento: <%= Evento %></p>
+            <!--Aqui se debe traer el nombre del evento-->
+        </div>
+    </header>
+    
+    <p class="tituloprogramacionIC">Programación de conferencias y talleres</p>
+    <hr class="lineahorizontal-centradaIC">
+
+    <div class="cuerpo-IC">
+        <div class="conte-eventoIC">
+            <!--tabla de los eventos-->
+            <table class="tablaIC" id="lista-conferenciasIC">	
+                <thead>
+                    <tr>
+                        <th>
+                            
+                        </th>       
+                    </tr>
+                </thead>
+
+                <tbody id="contenido-conferenciasIC">
+                    <% r.forEach((CoT)=> { %>
+                    <tr>
+                        <th>
+                            <div class="control-IC1">
+                                <p class="label-IC1">Fecha de inicio:</p>
+                                <input type="text" id="txtFecha1" name="Fecha1" class="textbox-IC1" value="<%= CoT.Fecha_Inicio.toISOString().split('T')[0] %>" readonly> 
+                                
+                                <p class="label-IC2">Fecha de finalización:</p>
+                                <input type="text" id="txtFecha2" name="Fecha2" class="textbox-IC2" value="<%= CoT.Fecha_Final.toISOString().split('T')[0] %>" readonly>
+
+                                <p class="label-IC3">Tipo de reunión:</p>
+                                <input type="text" id="txtReunion" name="Reunion" class="textbox-IC3" value="<%= CoT.Descripcion_Reunion %>" readonly>
+                            </div>
+
+                            <div class="control-IC1">
+                                <p class="label-IC1">Hora de inicio:</p>
+                                <input type="text" id="txtHora1" name="Hora1" class="textbox-IC1" value="<%= CoT.Hora_Inicio %>" readonly> 
+                                
+                                <p class="label-IC2">Hora final:</p>
+                                <input type="text" id="txtHora2" name="Hora2" class="textbox-IC2" value="<%= CoT.Hora_Final %>" readonly>
+                            
+                                <p class="label-IC3">Modalidad:</p> 
+                                <input type="text" id="txtModalidadIC" name="ModalidadIC" class="textbox-IC3" value="<%= CoT.Descripcion_Modalidad %>" readonly>  
+                            </div>
+
+                            <div class="control-IC1">
+                                <% if ( CoT.Limite_Participante ==  0){%>
+                                    <p class="label-IC1">Limitar participantes:</p>
+                                    <input type="text" id="txtLimitarParticipantes" name="LimitarParticipantes" class="textbox-IC1" value="No" readonly>
+                                    
+                                    <p class="label-IC2">Cantidad de participantes:</p>
+                                    <input type="text" id="txtNombreConferencia" name="NombreConferencia" class="textbox-IC2" value="Ilimitado" readonly>
+                                <% }%>
+                                <% if ( CoT.Limite_Participante >  0){%>
+                                    <p class="label-IC1">Limitar participantes:</p>
+                                    <input type="text" id="txtLimitarParticipantes" name="LimitarParticipantes" class="textbox-IC1" value="Si" readonly>
+                                    
+                                    <p class="label-IC2">Cantidad de participantes:</p>
+                                    <input type="text" id="txtNombreConferencia" name="NombreConferencia" class="textbox-IC2" value="<%= CoT.Limite_Participante %>" readonly>
+                                <% }%>
+                                    
+                            </div>
+
+                            <div class="control-IC1">
+                                <p class="label-IC1">Tema:</p>
+                                <input type="text" id="txtTema" name="Tema" class="textbox-IC4" value="<%= CoT.Nombre_Conferencia %>" readonly>
+                                
+                                <p class="label-IC4">Encargado:</p>
+                                <input type="text" id="txtEncargado" name="Encargado" class="textbox-IC5" value="<%= CoT.Email_Encargado %>" readonly> 
+                            </div>
+
+                            <div class="control-areaIC">
+                                <p class="label-IC1">Descripción:</p>
+                                <textarea name="DescripcionConferencia" id="txtDescripcionConferencia" cols="" rows="3" style="font-size: 1.3vw; font-family: cambria; color:#414141d3;;" readonly><%= CoT.Descripcion %></textarea> 
+                            </div>
+
+                            <div class="control-IC1">
+                                <!--aqui se debe cambiar dependiendo lo que escogio en el combobox de cuando lo creo-->
+                                <p class="label-IC1">Enlace o lugar:</p> 
+                                <!--aqui termina el cambiar dependiendo lo que escogio en el combobox de cuando lo creo-->
+                                <a href="<%= CoT.Enlace %>" id="txtEnlaceoConfIC" name="EnlaceoConfIC" class="textbox-ICenlace" target="_blank"><%= CoT.Enlace %></a>
+                            </div>
+
+                            <div class="control-IC1">
+                                <div>
+                                    <a href="/ListaDeParticipantesPresentes/<%= idEvento %>/<%= CoT.ID_Conferencia %>" class="boton-participantesIC" title="Click para ver Participantes Presentes" readonly>Participantes</a>
+                                </div>
+                                <div>
+                                    <a href="/Estadisticas/<%= CoT.ID_Conferencia %>" class="boton-estadisticasIC" title="Click para Ver Estadísticas" readonly>Ver estadísticas</a>
+                                </div>
+                                <div>
+                                    <button type="button" class="boton-eliminarIC" title="Click para Eliminar Conferencias" readonly onclick="EliminarCoT('<%= CoT.ID_Conferencia %>','<%= CoT.Descripcion_Reunion %>')">Eliminar</button>
+                                </div>
+                            </div> 
+                            
+                            <div class="contenedor-tabla-blanco-IC">
+                                <hr class="lineahorizontal-centradaIC">
+                            </div>
+                        </th>
+                    </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        function EliminarCoT(id,tipo){
+        Swal.fire({
+                title: '¿Seguro que desea Eliminar el taller o conferencia?',
+                text: "",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: '¡Sí, Eliminar su ' + tipo,
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    ///timer antes de ejecutar esta linea de codigo
+                    setTimeout(function() {
+                window.location="/EliminarCoT/"+id;},1000)
+                ////
+                Swal.fire(
+                'Eliminado!',
+                'Se ha Eliminado su '+tipo,
+                'success',
+                )
+            }
+        })}
+        ;
+        </script>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <% if(typeof alert !="undefined"){ %>
+        <script>
+            Swal.fire({
+                title: '<%= alertTitle %>',
+                text: '<%= alertMessage%>',
+                icon: '<%= alertIcon %>',
+                showConfirmButton: '<%=showConfirmButton%>',
+                timer: '<%= timer %>',
+            })
+        </script>
+    <% } %>  
+</body>
+</html>
