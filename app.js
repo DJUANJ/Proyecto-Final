@@ -137,11 +137,6 @@ app.get('/Menu', (req, res)=>{
     
 });
 
-
-
-
-
-
 app.get('/Terminos', (req, res)=>{
     res.render('terminos');
 });
@@ -1203,7 +1198,7 @@ app.post("/search", (req,res)=>{
 //metodo de actualizacion y filtrado de datos en la tabla de eventos de la pagina de EventosAcademicos
 app.post("/searchEvento", (req,res)=>{
     var search = req.body.filtrar;
-    var texto = req.body.bucarEvento;
+    var texto = req.body.buscarEvento;
     if(search=="Nombre"){
         conexion.query(`SELECT * FROM eventos INNER JOIN estado_evento on eventos.ID_Estado = estado_evento.ID_Estado WHERE eventos.ID_Estado < 4 AND eventos.ID_Tipo < 2 AND Nombre_Evento LIKE '%${texto}%'`, (error, result)=>{
             if(error){
@@ -1215,7 +1210,7 @@ app.post("/searchEvento", (req,res)=>{
                     }else{
                         conexion.query(`SELECT * FROM imagen_evento INNER JOIN eventos on imagen_evento.ID_Evento = eventos.ID_Evento`,(error, resultado)=>{
                             if(error){
-
+                                throw error
                             }else{
                                  //Eventos cerrados del loguaeado
                                  var EmailU = req.session.email;
@@ -2641,10 +2636,6 @@ app.get('/DescargarDiploma/:nfirmas/:nombreF1?/:cargo1?/:nombreF2?/:cargo2?/:nom
 
     ///funcion de pdf
 
-
-
-
-    
 app.get('/DescargarListaConferencia/:ID/:Nombre',(req,res)=>{
     var conferenciaID = req.params.ID;
     conexion.query(`SELECT eventos.ID_Evento,eventos.Nombre_Evento,eventos.Descripcion_Evento,eventos.Fecha_Inicio as F_Inicio_Evento,eventos.Fecha_Final as F_Final_Evento,registro_usuario.ID_Usuario,registro_usuario.Nombre_Usuario, registro_usuario.Email_Usuario ,conferencias_evento.ID_Conferencia,conferencias_evento.Nombre_Conferencia,
